@@ -37,12 +37,17 @@
 - `docs/plans/active/`: task-scoped planning bundles in progress
 - `docs/plans/completed/`: completed planning bundles for audit and replay
 - `memory/`: cross-session task registry
+- `system/codex-home/`: version-controlled mirror of selected global Codex policy and scaffold files
 
 ## Critical Flows
 - Source capture:
   - starts at: external article, paper, repo, or official documentation
   - passes through: `docs/research/sources/` and optionally `docs/research/notes/`
   - writes to or affects: synthesized guidance and project operating docs
+- System asset curation:
+  - starts at: live `~/.codex/` policy or scaffold changes
+  - passes through: `system/codex-home/`
+  - writes to or affects: tracked global AGENTS and shared scaffold templates
 - Task execution:
   - starts at: user request
   - passes through: `docs/plans/active/<task>/`
@@ -53,10 +58,11 @@
 - Preserved source captures must retain provenance metadata.
 - Task planning must live under `docs/plans/`, not in the repository root.
 - Project operating docs must reflect the actual directory structure and workflow.
+- The managed `system/codex-home/` mirror must exclude runtime state and stay limited to policy and scaffold assets.
 
 ## Hotspots
 - High-risk module: `AGENTS.md`, because it controls project routing
-- High-change area: `PROJECT_CONTEXT.md` and `VERIFICATION.md`
+- High-change area: `PROJECT_CONTEXT.md`, `VERIFICATION.md`, and `system/codex-home/`
 - Expensive or slow path: keeping references and directory structure synchronized after moves
 
 ## Useful Entry Points

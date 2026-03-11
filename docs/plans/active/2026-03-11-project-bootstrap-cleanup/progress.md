@@ -13,6 +13,8 @@
 - Moved research notes into `docs/research/notes/`
 - Moved old root planning files into `docs/plans/completed/2026-03-06-compare-article-paper-claude-code-workflow/`
 - Added root-level project entry docs and a research index
+- Mirrored selected `~/.codex` files into `system/codex-home/`
+- Added repository docs explaining the managed mirror boundary
 
 ### Test Results
 | Test | Expected | Actual | Status |
@@ -21,6 +23,7 @@
 | Old root planning files moved | No old `task_plan.md`, `findings.md`, `progress.md` at root | Verified | pass |
 | Placeholder scan | No scaffold placeholders remain in entry docs or research docs | Verified with `rg` | pass |
 | Old absolute path references | No stale root-level source or planning paths remain | Verified with `rg` | pass |
+| Managed Codex mirror matches live files | `system/codex-home/` mirrors selected `~/.codex` assets | Verified with `diff` | pass |
 
 ### Errors
 | Error | Resolution |

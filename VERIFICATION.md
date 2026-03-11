@@ -22,18 +22,21 @@
 
 ## Structural Checks
 - Architecture or dependency check: `find docs/research -maxdepth 3 -type f | sort`
+- Managed system mirror check: `find system/codex-home -maxdepth 3 -type f | sort`
 - Lint or static analysis check: `rg -n '\\[project-name\\]|\\[path-or-none\\]|\\[command|\\[task-name\\]' AGENTS.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md docs`
 - Naming, schema, or boundary check: `find docs/plans -maxdepth 4 -type f | sort`
 - What these checks are protecting:
   - root cleanliness
   - placeholder-free entry docs
   - predictable placement of research notes and plan bundles
+  - presence of the managed Codex home mirror
 
 ## Non-Negotiable Checks
 - Must pass before declaring completion:
   - no root-level `task_plan.md`, `findings.md`, or `progress.md`
   - no scaffold placeholder text in project entry docs
   - research sources remain accessible under `docs/research/sources/`
+  - managed Codex home mirror contains only policy and scaffold assets
 - Must not be modified as part of normal task completion:
   - provenance metadata inside preserved source captures
 

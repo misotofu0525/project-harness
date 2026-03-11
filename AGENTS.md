@@ -12,6 +12,7 @@
 - Short code and workflow taste guide: `GOLDEN_PRINCIPLES.md`
 - Verification entrypoint: `VERIFICATION.md`
 - Research index: `docs/research/index.zh.md`
+- Managed system mirror: `system/codex-home/`
 - Cross-session task state: `memory/active-tasks.json`
 - Active plan bundle: `docs/plans/active/<task>/`
 - Active plan file: `docs/plans/active/<task>/task_plan.md`
@@ -23,12 +24,14 @@
 - If the task is complex, read the active task bundle in `docs/plans/active/` when it exists.
 - Within the active task bundle, read `task_plan.md` first and `findings.md` or `progress.md` only when needed.
 - If the task depends on earlier research outputs, read `docs/research/index.zh.md` and only the relevant source or note files.
+- If the task is about Codex global policy or shared scaffolds, read `system/codex-home/` rather than assuming `~/.codex/` is the only tracked source.
 - If the work spans sessions, read `memory/active-tasks.json` when it exists.
 
 ## Required Procedures
 - If the task is multi-step research, repository restructuring, or workflow design, use the planning workflow and keep the active task bundle current.
 - If the task depends on external agent frameworks, APIs, or product behavior, verify against current official documentation before updating project guidance.
 - If the task changes repository structure or operating conventions, update `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, and `VERIFICATION.md` in the same turn.
+- If the task changes the managed global Codex policy or scaffold templates, update the mirror under `system/codex-home/` and the live `~/.codex/` copy together unless the task explicitly says otherwise.
 - If the task produces durable research output, store it under `docs/research/notes/` or `docs/research/sources/`, not in the repository root.
 - Before declaring completion, verify that no temporary planning files remain in the repository root and that no scaffold placeholders remain in the entry docs.
 
@@ -47,6 +50,7 @@
 - Research index: `docs/research/index.zh.md`
 - Source captures: `docs/research/sources/`
 - Research notes: `docs/research/notes/`
+- Managed Codex home mirror: `system/codex-home/`
 - Completed research plans: `docs/plans/completed/`
 
 ## Notes
