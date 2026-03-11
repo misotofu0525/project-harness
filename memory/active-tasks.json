@@ -1,0 +1,33 @@
+{
+  "_schema": {
+    "description": "Cross-session in-flight task registry for the context-engineering research project.",
+    "fields": {
+      "id": "Stable task id, for example T001",
+      "title": "Short task title",
+      "status": "active | blocked | waiting",
+      "context": "Current state and what has already been done",
+      "next_action": "The next concrete step",
+      "blocker": "What is blocking progress, if any",
+      "created": "YYYY-MM-DD",
+      "updated": "YYYY-MM-DD"
+    },
+    "rules": [
+      "Keep only tasks that really span sessions",
+      "Remove completed tasks",
+      "Do not duplicate information already stable in PROJECT_CONTEXT.md",
+      "Do not duplicate task detail already stored in plan artifacts"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Translate research conclusions into repo-local workflows",
+      "status": "active",
+      "context": "Global and project-level routing docs are in place. Research material has been organized. The main remaining gap is turning repeated guidance into repo-local workflows or skills when they become stable enough.",
+      "next_action": "Draft the first repo-local workflow or skill for verification or current-docs when the need becomes concrete.",
+      "blocker": "",
+      "created": "2026-03-11",
+      "updated": "2026-03-11"
+    }
+  ]
+}
