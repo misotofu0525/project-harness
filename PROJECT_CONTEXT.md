@@ -2,13 +2,14 @@
 
 ## Overview
 - What this project is: a research repository for exploring harness engineering, context engineering, and durable Codex workflows.
-- Primary users or consumers: the repository owner and future Codex sessions working on workflow design.
-- Current stage: initial project bootstrap with collected source material and synthesized research notes.
+- Primary users or consumers: the repository owner and future Codex sessions working on reusable workflows, scaffolds, and shared Codex assets for other projects.
+- Current stage: early workflow codification on top of the initial project bootstrap and collected research notes.
 
 ## Canonical Docs
 - Architecture: `ARCHITECTURE.md`
 - Golden principles: `GOLDEN_PRINCIPLES.md`
 - Verification: `VERIFICATION.md`
+- Managed shared skills mirror: `system/codex-home/skills/`
 - Research index: `docs/research/index.zh.md`
 
 ## Success Criteria
@@ -19,7 +20,7 @@
 
 ## Architecture
 - Main entry points: `AGENTS.md`, `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `VERIFICATION.md`, `docs/research/index.zh.md`
-- Key directories: `docs/research/sources/`, `docs/research/notes/`, `docs/plans/active/`, `docs/plans/completed/`, `memory/`, `system/codex-home/`
+- Key directories: `docs/research/sources/`, `docs/research/notes/`, `docs/plans/active/`, `docs/plans/completed/`, `memory/`, `system/codex-home/`, `system/codex-home/skills/`
 - External services or dependencies: official OpenAI and Anthropic docs, arXiv, public blog posts, and selected public repositories used as research inputs
 - Important data flows:
   - source capture -> summary or comparison -> synthesized guidance
@@ -29,7 +30,7 @@
 - Setup: `none`
 - Dev: `none`
 - Fast verify: `find . -maxdepth 2 -type f | sort`
-- Full verify: `rg -n '\\[project-name\\]|\\[path-or-none\\]|\\[command|\\[task-name\\]' AGENTS.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md docs`
+- Full verify: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md PROJECT_CONTEXT.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md VERIFICATION.md docs system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
 - Build: `none`
 - Lint: `none`
 
@@ -40,7 +41,7 @@
   - research directory structure
   - planning bundle cleanup
   - version-controlled mirror of global Codex policy and scaffolds
-  - future workflow and skill design grounded in collected material
+  - shared workflow and skill design grounded in collected material
 - Out-of-scope work:
   - application code
   - production automation
@@ -58,17 +59,19 @@
 | Store research sources under `docs/research/sources/` and syntheses under `docs/research/notes/` | Separates raw material from interpretation | 2026-03-11 |
 | Store planning files as task bundles under `docs/plans/` | Keeps root uncluttered and preserves task traceability | 2026-03-11 |
 | Mirror selected `~/.codex` policy and scaffold files under `system/codex-home/` | Allows the research project to version system-level prompt and scaffold assets without storing runtime state | 2026-03-11 |
+| Store shared Codex skills under `system/codex-home/skills/` and sync them to `~/.codex/skills/` | Keeps reusable cross-project workflow assets versioned in the research repo and usable in future projects | 2026-03-11 |
 
 ## Session Handoff
 - Last updated: 2026-03-11
-- Current task: bootstrap the repository as a harness-engineering research project and clean up root-level temporary files.
+- Current task: prepare the next shared verification skill after landing `current-docs-sync`.
 - What changed recently:
   - created project-level entry docs
   - created `docs/research/` and `docs/plans/` structure
   - moved previous research and planning artifacts out of the root
   - mirrored selected `~/.codex` files into `system/codex-home/`
-- Next recommended step: turn the current research conclusions into repo-local workflows or skills only when they become repetitive enough.
-- Known blocker: repo-local skills for verification and current-docs do not exist yet.
+  - added the first shared skill at `system/codex-home/skills/current-docs-sync/` and synced it to `~/.codex/skills/current-docs-sync/`
+- Next recommended step: draft the shared verification skill once the verification workflow stabilizes further.
+- Known blocker: the shared verification skill does not exist yet.
 
 ## Notes
 - Keep this file factual, current, and short.

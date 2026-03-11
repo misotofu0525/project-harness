@@ -8,6 +8,7 @@ It exists so the project can track:
 
 - the current global `AGENTS.md`
 - the shared `project-scaffolds/` templates
+- shared reusable Codex skills
 
 without versioning runtime state from the real Codex home directory.
 
@@ -17,6 +18,7 @@ Tracked here:
 
 - `AGENTS.md`
 - `project-scaffolds/`
+- `skills/`
 
 Not tracked here:
 

@@ -21,10 +21,10 @@
   "tasks": [
     {
       "id": "T001",
-      "title": "Translate research conclusions into repo-local workflows",
+      "title": "Translate research conclusions into shared Codex workflows",
       "status": "active",
-      "context": "Global and project-level routing docs are in place. Research material has been organized. The main remaining gap is turning repeated guidance into repo-local workflows or skills when they become stable enough.",
-      "next_action": "Draft the first repo-local workflow or skill for verification or current-docs when the need becomes concrete.",
+      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects.",
+      "next_action": "Draft the shared verification skill to complement `current-docs-sync`.",
       "blocker": "",
       "created": "2026-03-11",
       "updated": "2026-03-11"
