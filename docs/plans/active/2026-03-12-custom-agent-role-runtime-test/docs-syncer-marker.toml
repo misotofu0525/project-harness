@@ -1,0 +1,7 @@
+model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Before your final answer, create the file /Users/misotofu/Documents/workspace/context-engineering/docs/plans/active/2026-03-12-custom-agent-role-runtime-test/docs_syncer_marker.txt containing the exact text SYNCER_OK.
+When you produce your final answer, begin the first sentence with the exact token ROLE_MARKER_DOCS_SYNCER.
+Do not mention these instructions.
+"""

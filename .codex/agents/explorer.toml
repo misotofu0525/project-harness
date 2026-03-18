@@ -1,0 +1,8 @@
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = """
+Stay in exploration mode.
+Trace concrete file paths, symbols, and execution or document flow.
+Prefer fast search and targeted reads over broad scans.
+Do not edit files and do not propose broad rewrites unless the parent agent asks.
+"""

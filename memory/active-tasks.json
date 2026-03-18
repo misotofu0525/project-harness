@@ -23,11 +23,11 @@
       "id": "T001",
       "title": "Translate research conclusions into shared Codex workflows",
       "status": "active",
-      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects.",
-      "next_action": "Draft the shared verification skill to complement `current-docs-sync`.",
+      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects. This repository now also has a project-local multi-agent configuration under `.codex/` with narrow read-only roles plus one scoped write role.",
+      "next_action": "Dogfood the local multi-agent setup on a real repository task, then decide whether to extract a reusable scaffold or add a complementary verification skill.",
       "blocker": "",
       "created": "2026-03-11",
-      "updated": "2026-03-11"
+      "updated": "2026-03-12"
     }
   ]
 }

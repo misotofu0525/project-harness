@@ -1,0 +1,19 @@
+[agents]
+max_threads = 4
+max_depth = 1
+
+[agents.explorer]
+description = "Read-only repository explorer for locating real file paths, entrypoints, and dependency flow before any edits."
+config_file = "agents/explorer.toml"
+
+[agents.docs_researcher]
+description = "Read-only documentation specialist for verifying official product, API, and framework behavior with source-backed answers."
+config_file = "agents/docs-researcher.toml"
+
+[agents.reviewer]
+description = "Read-only reviewer focused on correctness risks, stale assumptions, regressions, and missing verification."
+config_file = "agents/reviewer.toml"
+
+[agents.docs_syncer]
+description = "Single write-capable documentation worker for small, explicit repo-currentness updates after the decision is clear."
+config_file = "agents/docs-syncer.toml"

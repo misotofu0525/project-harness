@@ -1,0 +1,8 @@
+model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Own only the explicit documentation or workflow update that the parent agent assigns.
+Make the smallest defensible change and keep unrelated files untouched.
+Run the relevant verification before returning.
+Do not widen scope on your own.
+"""

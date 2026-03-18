@@ -11,6 +11,8 @@
 - Short architecture map: `ARCHITECTURE.md`
 - Short code and workflow taste guide: `GOLDEN_PRINCIPLES.md`
 - Verification entrypoint: `VERIFICATION.md`
+- Project-local Codex config: `.codex/config.toml`
+- Project-local Codex agent roles: `.codex/agents/`
 - Research index: `docs/research/index.zh.md`
 - Managed system mirror: `system/codex-home/`
 - Managed shared skills mirror: `system/codex-home/skills/`
@@ -22,6 +24,7 @@
 ## Load Order
 - Read `PROJECT_CONTEXT.md` first.
 - If the task affects repository structure, workflow design, or system boundaries, read `ARCHITECTURE.md` next.
+- If the task is about project-local multi-agent behavior, read `.codex/config.toml` and only the relevant `.codex/agents/*.toml` files after the core entry docs.
 - If the task is about a managed shared skill, read the relevant `system/codex-home/skills/<skill>/SKILL.md` after the core entry docs.
 - If the task is complex, read the active task bundle in `docs/plans/active/` when it exists.
 - Within the active task bundle, read `task_plan.md` first and `findings.md` or `progress.md` only when needed.
@@ -49,6 +52,8 @@
 - Full verification when needed: see `VERIFICATION.md`
 
 ## Project-Specific Docs
+- Project-local Codex config: `.codex/config.toml`
+- Project-local agent roles: `.codex/agents/`
 - Research index: `docs/research/index.zh.md`
 - Source captures: `docs/research/sources/`
 - Research notes: `docs/research/notes/`

@@ -23,15 +23,19 @@
 - Main apps, services, or processes:
   - markdown-first research and curation
   - ad hoc command-line verification
+  - project-local Codex multi-agent orchestration through `.codex/config.toml`
   - managed shared Codex skills or scripts when workflows stabilize
 - Entry points:
   - `AGENTS.md`
   - `PROJECT_CONTEXT.md`
+  - `.codex/config.toml`
   - `docs/research/index.zh.md`
 - Background jobs or async workers:
   - none
 
 ## Key Directories
+- `.codex/`: project-local Codex runtime configuration for this repository
+- `.codex/agents/`: role-specific agent config layers used by the local multi-agent setup
 - `docs/research/sources/`: preserved source captures with provenance
 - `docs/research/notes/`: summaries, comparisons, and synthesized guidance
 - `docs/plans/active/`: task-scoped planning bundles in progress
@@ -41,6 +45,10 @@
 - `system/codex-home/skills/`: version-controlled mirror of shared Codex skills intended for other projects
 
 ## Critical Flows
+- Local multi-agent task execution:
+  - starts at: user request or parent agent decision
+  - passes through: `.codex/config.toml` and the relevant `.codex/agents/*.toml` role layer
+  - writes to or affects: read-only sub-agent analysis or a single scoped documentation update plus verification
 - Source capture:
   - starts at: external article, paper, repo, or official documentation
   - passes through: `docs/research/sources/` and optionally `docs/research/notes/`
@@ -56,6 +64,7 @@
 
 ## Invariants
 - Root should contain only entry docs and intentionally high-signal project files.
+- Project-local multi-agent roles should stay narrow, with read-heavy roles defaulting to read-only.
 - Preserved source captures must retain provenance metadata.
 - Task planning must live under `docs/plans/`, not in the repository root.
 - Project operating docs must reflect the actual directory structure and workflow.
@@ -64,7 +73,7 @@
 
 ## Hotspots
 - High-risk module: `AGENTS.md`, because it controls project routing
-- High-change area: `PROJECT_CONTEXT.md`, `VERIFICATION.md`, and `system/codex-home/`
+- High-change area: `.codex/`, `PROJECT_CONTEXT.md`, `VERIFICATION.md`, and `system/codex-home/`
 - Expensive or slow path: keeping references and directory structure synchronized after moves
 
 ## Useful Entry Points

@@ -9,6 +9,7 @@
 - Architecture: `ARCHITECTURE.md`
 - Golden principles: `GOLDEN_PRINCIPLES.md`
 - Verification: `VERIFICATION.md`
+- Project-local Codex config: `.codex/config.toml`
 - Managed shared skills mirror: `system/codex-home/skills/`
 - Research index: `docs/research/index.zh.md`
 
@@ -19,8 +20,8 @@
 - Temporary planning files are kept under `docs/plans/`, not in the repository root.
 
 ## Architecture
-- Main entry points: `AGENTS.md`, `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `VERIFICATION.md`, `docs/research/index.zh.md`
-- Key directories: `docs/research/sources/`, `docs/research/notes/`, `docs/plans/active/`, `docs/plans/completed/`, `memory/`, `system/codex-home/`, `system/codex-home/skills/`
+- Main entry points: `AGENTS.md`, `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `VERIFICATION.md`, `.codex/config.toml`, `docs/research/index.zh.md`
+- Key directories: `.codex/`, `.codex/agents/`, `docs/research/sources/`, `docs/research/notes/`, `docs/plans/active/`, `docs/plans/completed/`, `memory/`, `system/codex-home/`, `system/codex-home/skills/`
 - External services or dependencies: official OpenAI and Anthropic docs, arXiv, public blog posts, and selected public repositories used as research inputs
 - Important data flows:
   - source capture -> summary or comparison -> synthesized guidance
@@ -30,16 +31,17 @@
 - Setup: `none`
 - Dev: `none`
 - Fast verify: `find . -maxdepth 2 -type f | sort`
-- Full verify: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md PROJECT_CONTEXT.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md VERIFICATION.md docs system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
+- Full verify: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md PROJECT_CONTEXT.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md VERIFICATION.md .codex docs system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
 - Build: `none`
 - Lint: `none`
 
 ## Current Focus
-- Current priority: turn this directory into a durable research project rather than a loose pile of notes.
+- Current priority: codify durable Codex workflow patterns in-repo, including project-local multi-agent conventions.
 - In-scope work:
   - project-level bootstrap docs
   - research directory structure
   - planning bundle cleanup
+  - project-local multi-agent config
   - version-controlled mirror of global Codex policy and scaffolds
   - shared workflow and skill design grounded in collected material
 - Out-of-scope work:
@@ -60,18 +62,20 @@
 | Store planning files as task bundles under `docs/plans/` | Keeps root uncluttered and preserves task traceability | 2026-03-11 |
 | Mirror selected `~/.codex` policy and scaffold files under `system/codex-home/` | Allows the research project to version system-level prompt and scaffold assets without storing runtime state | 2026-03-11 |
 | Store shared Codex skills under `system/codex-home/skills/` and sync them to `~/.codex/skills/` | Keeps reusable cross-project workflow assets versioned in the research repo and usable in future projects | 2026-03-11 |
+| Store repository-specific multi-agent role definitions under project-local `.codex/` files | Keeps agent behavior versioned with the repository while leaving the global config thin | 2026-03-12 |
 
 ## Session Handoff
-- Last updated: 2026-03-11
-- Current task: prepare the next shared verification skill after landing `current-docs-sync`.
+- Last updated: 2026-03-12
+- Current task: add project-local multi-agent configuration for the repository and sync the affected current docs.
 - What changed recently:
   - created project-level entry docs
   - created `docs/research/` and `docs/plans/` structure
   - moved previous research and planning artifacts out of the root
   - mirrored selected `~/.codex` files into `system/codex-home/`
   - added the first shared skill at `system/codex-home/skills/current-docs-sync/` and synced it to `~/.codex/skills/current-docs-sync/`
-- Next recommended step: draft the shared verification skill once the verification workflow stabilizes further.
-- Known blocker: the shared verification skill does not exist yet.
+  - added a project-local `.codex/config.toml` with narrow multi-agent role definitions under `.codex/agents/`
+- Next recommended step: dogfood the local agent roles on a real repository task and decide whether to extract a reusable scaffold pattern.
+- Known blocker: no repository-local smoke test exists yet for validating agent role config beyond structural checks.
 
 ## Notes
 - Keep this file factual, current, and short.
