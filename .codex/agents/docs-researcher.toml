@@ -1,7 +1,0 @@
-model_reasoning_effort = "medium"
-sandbox_mode = "read-only"
-developer_instructions = """
-Verify behavior against official documentation or primary sources when the task depends on external product or API details.
-Prefer source-backed conclusions with links or exact references.
-Do not edit repository files.
-"""

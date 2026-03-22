@@ -22,7 +22,7 @@
 
 ## Structural Checks
 - Project-local agent config check: `find .codex -maxdepth 2 -type f | sort`
-- Agent role link check: `rg -n 'config_file = ' .codex/config.toml`
+- Custom subagent link check: `rg -n 'config_file = ' .codex/config.toml`
 - Architecture or dependency check: `find docs/research -maxdepth 3 -type f | sort`
 - Managed shared skill mirror check: `find system/codex-home/skills -maxdepth 3 -type f | sort`
 - Live shared skill check: `find ~/.codex/skills -maxdepth 2 \\( -type d -o -type f \\) | sort`
@@ -32,6 +32,7 @@
 - What these checks are protecting:
   - root cleanliness
   - presence of project-local multi-agent config
+  - a minimal project-local custom subagent surface
   - placeholder-free entry docs
   - placeholder-free project-local agent config files
   - placeholder-free managed shared skill files
@@ -42,7 +43,7 @@
 ## Non-Negotiable Checks
 - Must pass before declaring completion:
   - no root-level `task_plan.md`, `findings.md`, or `progress.md`
-  - project-local `.codex/config.toml` and referenced `.codex/agents/*.toml` files exist when this repository uses local multi-agent roles
+  - project-local `.codex/config.toml` and referenced `.codex/agents/*.toml` files exist when this repository defines a custom subagent role
   - no scaffold placeholder text in project entry docs
   - no scaffold placeholder text in project-local agent config files
   - no scaffold placeholder text in managed shared skill files
@@ -54,7 +55,7 @@
 
 ## Failure Triage
 - First file or log to inspect: `.codex/config.toml`
-- Common failure mode: added or renamed role config files without updating the project-local role map or current docs
+- Common failure mode: added or renamed custom role config files without updating the project-local role map or current docs
 - Recovery step: fix paths first, then re-run the structural checks above
 
 ## Notes

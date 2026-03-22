@@ -23,7 +23,7 @@
 - Main apps, services, or processes:
   - markdown-first research and curation
   - ad hoc command-line verification
-  - project-local Codex multi-agent orchestration through `.codex/config.toml`
+  - project-local Codex configuration with one custom docs-sync subagent layered on top of built-in roles
   - managed shared Codex skills or scripts when workflows stabilize
 - Entry points:
   - `AGENTS.md`
@@ -35,7 +35,7 @@
 
 ## Key Directories
 - `.codex/`: project-local Codex runtime configuration for this repository
-- `.codex/agents/`: role-specific agent config layers used by the local multi-agent setup
+- `.codex/agents/`: custom role config layers used only when the built-in roles are not enough
 - `docs/research/sources/`: preserved source captures with provenance
 - `docs/research/notes/`: summaries, comparisons, and synthesized guidance
 - `docs/plans/active/`: task-scoped planning bundles in progress
@@ -47,8 +47,8 @@
 ## Critical Flows
 - Local multi-agent task execution:
   - starts at: user request or parent agent decision
-  - passes through: `.codex/config.toml` and the relevant `.codex/agents/*.toml` role layer
-  - writes to or affects: read-only sub-agent analysis or a single scoped documentation update plus verification
+  - passes through: built-in roles by default, and `.codex/config.toml` plus `.codex/agents/docs-syncer.toml` when a current-doc sync action is needed
+  - writes to or affects: a single scoped documentation update plus verification when the custom role is used
 - Source capture:
   - starts at: external article, paper, repo, or official documentation
   - passes through: `docs/research/sources/` and optionally `docs/research/notes/`
@@ -64,7 +64,7 @@
 
 ## Invariants
 - Root should contain only entry docs and intentionally high-signal project files.
-- Project-local multi-agent roles should stay narrow, with read-heavy roles defaulting to read-only.
+- Project-local custom subagent roles should stay rare and should only exist when they express cross-project value that built-in roles do not cover well.
 - Preserved source captures must retain provenance metadata.
 - Task planning must live under `docs/plans/`, not in the repository root.
 - Project operating docs must reflect the actual directory structure and workflow.

@@ -10,6 +10,7 @@
 - Golden principles: `GOLDEN_PRINCIPLES.md`
 - Verification: `VERIFICATION.md`
 - Project-local Codex config: `.codex/config.toml`
+- Project-local custom subagent config: `.codex/agents/docs-syncer.toml`
 - Managed shared skills mirror: `system/codex-home/skills/`
 - Research index: `docs/research/index.zh.md`
 
@@ -36,12 +37,13 @@
 - Lint: `none`
 
 ## Current Focus
-- Current priority: codify durable Codex workflow patterns in-repo, including project-local multi-agent conventions.
+- Current priority: codify durable Codex workflow patterns in-repo, including a minimal cross-project custom subagent pattern.
 - In-scope work:
   - project-level bootstrap docs
   - research directory structure
   - planning bundle cleanup
   - project-local multi-agent config
+  - minimal custom subagent design for cross-project reuse
   - version-controlled mirror of global Codex policy and scaffolds
   - shared workflow and skill design grounded in collected material
 - Out-of-scope work:
@@ -63,19 +65,20 @@
 | Mirror selected `~/.codex` policy and scaffold files under `system/codex-home/` | Allows the research project to version system-level prompt and scaffold assets without storing runtime state | 2026-03-11 |
 | Store shared Codex skills under `system/codex-home/skills/` and sync them to `~/.codex/skills/` | Keeps reusable cross-project workflow assets versioned in the research repo and usable in future projects | 2026-03-11 |
 | Store repository-specific multi-agent role definitions under project-local `.codex/` files | Keeps agent behavior versioned with the repository while leaving the global config thin | 2026-03-12 |
+| Keep only `docs_syncer` as a custom cross-project subagent role and rely on built-in roles for overlapping capabilities | Minimizes custom surface area while preserving the repository's durable docs-sync workflow | 2026-03-22 |
 
 ## Session Handoff
-- Last updated: 2026-03-12
-- Current task: add project-local multi-agent configuration for the repository and sync the affected current docs.
+- Last updated: 2026-03-22
+- Current task: reduce project-local custom subagents to the minimal cross-project set and sync the affected current docs.
 - What changed recently:
   - created project-level entry docs
   - created `docs/research/` and `docs/plans/` structure
   - moved previous research and planning artifacts out of the root
   - mirrored selected `~/.codex` files into `system/codex-home/`
   - added the first shared skill at `system/codex-home/skills/current-docs-sync/` and synced it to `~/.codex/skills/current-docs-sync/`
-  - added a project-local `.codex/config.toml` with narrow multi-agent role definitions under `.codex/agents/`
-- Next recommended step: dogfood the local agent roles on a real repository task and decide whether to extract a reusable scaffold pattern.
-- Known blocker: no repository-local smoke test exists yet for validating agent role config beyond structural checks.
+  - added a project-local `.codex/config.toml` and then reduced the custom role set to a single cross-project `docs_syncer` role under `.codex/agents/`
+- Next recommended step: add a task contract template and dogfood the minimal custom subagent pattern on a real repository task.
+- Known blocker: no git remote is configured, so push-based workflow checks cannot be exercised from this repository right now.
 
 ## Notes
 - Keep this file factual, current, and short.
