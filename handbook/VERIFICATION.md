@@ -11,7 +11,7 @@
 - Expected runtime: a few seconds
 
 ## Full Verification
-- Full project check: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md PROJECT_CONTEXT.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md VERIFICATION.md .codex docs system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
+- Full project check: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md handbook .codex docs memory system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
 - When to run it: after creating or editing project-level docs and templates.
 - Expected runtime: a few seconds
 
@@ -21,6 +21,7 @@
 - Required fixture, sample data, or environment: none
 
 ## Structural Checks
+- Current-doc placement check: `find handbook -maxdepth 1 -type f | sort`
 - Project-local agent config check: `find .codex -maxdepth 2 -type f | sort`
 - Custom subagent link check: `rg -n 'config_file = ' .codex/config.toml`
 - Managed vs live global AGENTS check: `diff -u system/codex-home/AGENTS.md ~/.codex/AGENTS.md`
@@ -28,10 +29,11 @@
 - Managed shared skill mirror check: `find system/codex-home/skills -maxdepth 3 -type f | sort`
 - Live shared skill check: `find ~/.codex/skills -maxdepth 2 \\( -type d -o -type f \\) | sort`
 - Managed system mirror check: `find system/codex-home -maxdepth 3 -type f | sort`
-- Lint or static analysis check: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md PROJECT_CONTEXT.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md VERIFICATION.md .codex docs system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
+- Lint or static analysis check: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md handbook .codex docs memory system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
 - Naming, schema, or boundary check: `find docs/plans -maxdepth 4 -type f | sort`
 - What these checks are protecting:
   - root cleanliness
+  - placement of project current docs under `handbook/`
   - presence of project-local multi-agent config
   - a minimal project-local custom subagent surface
   - alignment between the managed global AGENTS mirror and the live global AGENTS copy
@@ -45,6 +47,8 @@
 ## Non-Negotiable Checks
 - Must pass before declaring completion:
   - no root-level `task_plan.md`, `findings.md`, or `progress.md`
+  - no root-level `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `GOLDEN_PRINCIPLES.md`, or `VERIFICATION.md`
+  - `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, `handbook/GOLDEN_PRINCIPLES.md`, and `handbook/VERIFICATION.md` exist
   - project-local `.codex/config.toml` and referenced `.codex/agents/*.toml` files exist when this repository defines a custom subagent role
   - the managed global `system/codex-home/AGENTS.md` mirror matches the live `~/.codex/AGENTS.md` copy when global policy changed
   - no scaffold placeholder text in project entry docs

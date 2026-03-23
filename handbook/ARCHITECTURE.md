@@ -27,7 +27,9 @@
   - managed shared Codex skills or scripts when workflows stabilize
 - Entry points:
   - `AGENTS.md`
-  - `PROJECT_CONTEXT.md`
+  - `handbook/PROJECT_CONTEXT.md`
+  - `handbook/ARCHITECTURE.md`
+  - `handbook/VERIFICATION.md`
   - `.codex/config.toml`
   - `docs/research/index.zh.md`
 - Background jobs or async workers:
@@ -36,6 +38,7 @@
 ## Key Directories
 - `.codex/`: project-local Codex runtime configuration for this repository
 - `.codex/agents/`: custom role config layers used only when the built-in roles are not enough
+- `handbook/`: project currentness docs kept separate from research outputs and the root entrypoint
 - `docs/research/sources/`: preserved source captures with provenance
 - `docs/research/notes/`: summaries, comparisons, and synthesized guidance
 - `docs/plans/active/`: task-scoped planning bundles in progress
@@ -52,7 +55,7 @@
 - Local multi-agent task execution:
   - starts at: user request or parent agent decision
   - passes through: built-in roles by default, and `.codex/config.toml` plus `.codex/agents/docs-syncer.toml` when a current-doc sync action is needed
-  - writes to or affects: a single scoped documentation update plus verification when the custom role is used
+  - writes to or affects: a single scoped documentation update under `handbook/` plus related indexes or task state when the custom role is used
 - Source capture:
   - starts at: external article, paper, repo, or official documentation
   - passes through: `docs/research/sources/` and optionally `docs/research/notes/`
@@ -67,7 +70,8 @@
   - writes to or affects: repository docs, then `docs/plans/completed/<task>/`
 
 ## Invariants
-- Root should contain only entry docs and intentionally high-signal project files.
+- Root should contain `AGENTS.md` and only intentionally high-signal top-level project files.
+- Project currentness docs should live under `handbook/`, not in the root.
 - Cross-project subagent delegation rules should live in the global AGENTS layer, while repository-specific custom subagent rules should live in the project AGENTS layer.
 - Project-local custom subagent roles should stay rare and should only exist when they express cross-project value that built-in roles do not cover well.
 - Preserved source captures must retain provenance metadata.
@@ -78,13 +82,13 @@
 
 ## Hotspots
 - High-risk module: `AGENTS.md`, because it controls project routing
-- High-change area: `.codex/`, `PROJECT_CONTEXT.md`, `VERIFICATION.md`, and `system/codex-home/`
+- High-change area: `.codex/`, `handbook/`, and `system/codex-home/`
 - Expensive or slow path: keeping references and directory structure synchronized after moves
 
 ## Useful Entry Points
-- Read first for feature work: `PROJECT_CONTEXT.md`
-- Read first for debugging: `VERIFICATION.md`
-- Read first for verification: `VERIFICATION.md`
+- Read first for feature work: `handbook/PROJECT_CONTEXT.md`
+- Read first for debugging: `handbook/VERIFICATION.md`
+- Read first for verification: `handbook/VERIFICATION.md`
 
 ## Notes
 - Prefer short maps over long prose.

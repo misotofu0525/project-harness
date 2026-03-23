@@ -6,7 +6,7 @@
 - Prefer rules that can later be enforced by checks, scripts, or skills.
 
 ## Golden Principles
-- Keep the repository root thin; entry docs belong in root, durable research belongs under `docs/`.
+- Keep the repository root thin; `AGENTS.md` stays in root, operating docs belong under `handbook/`, and durable research belongs under `docs/`.
 - Preserve provenance. Raw source captures and synthesized notes should remain clearly separated.
 - Update project-level docs when repository structure or operating conventions change.
 - Prefer explicit file paths and small, reviewable edits over broad rewrites.
@@ -14,6 +14,7 @@
 
 ## Smells To Resist
 - Root directory clutter
+- Mixing operating docs with research outputs in the same directory
 - Duplicate summaries of the same source in multiple places
 - Stale absolute links after file moves
 - Mixing raw source text with downstream interpretation
@@ -21,7 +22,7 @@
 
 ## Mechanical Follow-Through
 - Promote repeated repository-structure checks into verification commands.
-- Prefer checks that catch placeholder text, stale paths, and root-level planning drift.
+- Prefer checks that catch placeholder text, stale paths, handbook placement regressions, and root-level planning drift.
 - Remove stale notes or duplicate artifacts instead of letting them accumulate.
 
 ## Notes

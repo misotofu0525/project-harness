@@ -124,7 +124,7 @@
 
 - 顶层 [AGENTS.md](/Users/misotofu/Documents/workspace/context-engineering/AGENTS.md) 已经是路由器，而不是百科全书
 - 复杂任务已经使用 `docs/plans/active/<task>/` 做文件化 planning
-- [VERIFICATION.md](/Users/misotofu/Documents/workspace/context-engineering/VERIFICATION.md) 已经把“完成前验证”写成显式流程
+- [handbook/VERIFICATION.md](/Users/misotofu/Documents/workspace/context-engineering/handbook/VERIFICATION.md) 已经把“完成前验证”写成显式流程
 - 项目已经把 repo-specific agent behavior 放进 [`.codex/config.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/config.toml)
 - 本地 multi-agent 角色已经做成“主 agent 决策 + 窄职责子 agent + 单一写入角色”的收口设计
 

@@ -99,7 +99,7 @@
 - `projects.md`
 - `goals.md`
 - `active-tasks.json`
-- `PROJECT_CONTEXT.md`
+- `handbook/PROJECT_CONTEXT.md`
 
 这和论文“上下文应该是持久、可治理资源”的方向一致。
 
@@ -119,7 +119,7 @@
 尤其体现在：
 
 - `SSOT Ownership`
-- 外部模型只允许写 `PROJECT_CONTEXT.md` 指定 handoff block
+- 外部模型只允许写 `handbook/PROJECT_CONTEXT.md` 指定 handoff block
 - `.claude/` 和知识库不允许外部模型乱写
 
 这和论文里的 `governance / access control / traceability` 方向相当接近。

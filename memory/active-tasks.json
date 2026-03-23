@@ -14,7 +14,7 @@
     "rules": [
       "Keep only tasks that really span sessions",
       "Remove completed tasks",
-      "Do not duplicate information already stable in PROJECT_CONTEXT.md",
+      "Do not duplicate information already stable in handbook/PROJECT_CONTEXT.md",
       "Do not duplicate task detail already stored in plan artifacts"
     ]
   },
