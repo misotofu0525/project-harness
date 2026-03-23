@@ -72,6 +72,7 @@
 ## Invariants
 - Root should contain `AGENTS.md` and only intentionally high-signal top-level project files.
 - Project currentness docs should live under `handbook/`, not in the root.
+- The shared project scaffold should default to `AGENTS.md` in the root and the rest of the current docs under `handbook/`.
 - Cross-project subagent delegation rules should live in the global AGENTS layer, while repository-specific custom subagent rules should live in the project AGENTS layer.
 - Project-local custom subagent roles should stay rare and should only exist when they express cross-project value that built-in roles do not cover well.
 - Preserved source captures must retain provenance metadata.
@@ -82,7 +83,7 @@
 
 ## Hotspots
 - High-risk module: `AGENTS.md`, because it controls project routing
-- High-change area: `.codex/`, `handbook/`, and `system/codex-home/`
+- High-change area: `.codex/`, `handbook/`, `system/codex-home/project-scaffolds/`, and `system/codex-home/skills/`
 - Expensive or slow path: keeping references and directory structure synchronized after moves
 
 ## Useful Entry Points

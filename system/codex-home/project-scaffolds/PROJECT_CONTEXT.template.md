@@ -6,9 +6,9 @@
 - Current stage:
 
 ## Canonical Docs
-- Architecture: `ARCHITECTURE.md` or `[path-or-none]`
-- Golden principles: `GOLDEN_PRINCIPLES.md` or `[path-or-none]`
-- Verification: `VERIFICATION.md` or `[path-or-none]`
+- Architecture: `handbook/ARCHITECTURE.md` or `[path-or-none]`
+- Golden principles: `handbook/GOLDEN_PRINCIPLES.md` or `[path-or-none]`
+- Verification: `handbook/VERIFICATION.md` or `[path-or-none]`
 - Decisions or ADRs: `[path-or-none]`
 
 ## Success Criteria

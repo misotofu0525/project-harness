@@ -7,18 +7,18 @@
 
 ## Canonical Paths
 - Project entrypoint: `AGENTS.md`
-- Project state: `PROJECT_CONTEXT.md`
-- Short architecture map: `ARCHITECTURE.md` or project-defined equivalent
-- Short code taste guide: `GOLDEN_PRINCIPLES.md` or project-defined equivalent
-- Verification entrypoint: `VERIFICATION.md` or project-defined equivalent
+- Project state: `handbook/PROJECT_CONTEXT.md`
+- Short architecture map: `handbook/ARCHITECTURE.md` or project-defined equivalent
+- Short code taste guide: `handbook/GOLDEN_PRINCIPLES.md` or project-defined equivalent
+- Verification entrypoint: `handbook/VERIFICATION.md` or project-defined equivalent
 - Cross-session task state: `memory/active-tasks.json`
 - Active plan bundle: `docs/plans/active/<task>/`
 - Active plan file: `docs/plans/active/<task>/task_plan.md`
 - Completed plan bundles: `docs/plans/completed/<task>/`
 
 ## Load Order
-- Read `PROJECT_CONTEXT.md` first.
-- If the task depends on architecture and `ARCHITECTURE.md` exists, read it next.
+- Read `handbook/PROJECT_CONTEXT.md` first.
+- If the task depends on architecture and `handbook/ARCHITECTURE.md` exists, read it next.
 - If the task is complex, read the active task bundle in `docs/plans/active/` when it exists.
 - Within the active task bundle, read `task_plan.md` first and `findings.md` or `progress.md` only when needed.
 - If the work spans sessions and `memory/active-tasks.json` exists, read it next.
@@ -28,7 +28,7 @@
 - If the task is complex or multi-step, use the planning workflow.
 - If the task is debugging or failure investigation, use the debugging workflow.
 - If the task is near completion, use the verification workflow before declaring done.
-- If the task is being resumed after a gap, re-read `PROJECT_CONTEXT.md` and active task state first.
+- If the task is being resumed after a gap, re-read `handbook/PROJECT_CONTEXT.md` and active task state first.
 - If the task is straightforward, work directly.
 
 ## Project Hard Rules
@@ -38,15 +38,15 @@
 - Prefer existing patterns over introducing new structure.
 
 ## Verification
-- Canonical verification doc: `VERIFICATION.md` or `[path-or-none]`
+- Canonical verification doc: `handbook/VERIFICATION.md` or `[path-or-none]`
 - Fastest relevant check: `[command-or-script]`
 - Full verification when needed: `[command-or-script]`
 - Prefer repo-local scripts or task runners over hand-assembled checks.
 
 ## Project-Specific Docs
-- Architecture: `ARCHITECTURE.md` or `[path-or-none]`
-- Golden principles: `GOLDEN_PRINCIPLES.md` or `[path-or-none]`
-- Verification guide: `VERIFICATION.md` or `[path-or-none]`
+- Architecture: `handbook/ARCHITECTURE.md` or `[path-or-none]`
+- Golden principles: `handbook/GOLDEN_PRINCIPLES.md` or `[path-or-none]`
+- Verification guide: `handbook/VERIFICATION.md` or `[path-or-none]`
 - Decisions or ADRs: `[path-or-none]`
 - References: `[path-or-none]`
 - Debugging guide: `[path-or-none]`

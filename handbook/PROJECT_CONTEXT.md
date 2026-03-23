@@ -69,10 +69,11 @@
 | Keep only `docs_syncer` as a custom cross-project subagent role and rely on built-in roles for overlapping capabilities | Minimizes custom surface area while preserving the repository's durable docs-sync workflow | 2026-03-22 |
 | Keep generic subagent delegation rules in the global AGENTS layer and repository-specific custom subagent rules in the project AGENTS layer | Preserves context layering and keeps the project router practical | 2026-03-23 |
 | Keep only `AGENTS.md` at the root as the project router and move project current-doc files into `handbook/` | Separates repository operating docs from research outputs while preserving a standard root entrypoint | 2026-03-23 |
+| Make `handbook/` the default location for project current docs in the shared scaffold and sync the live scaffold plus current-docs-sync skill to match | Aligns bootstrap defaults, shared docs-sync guidance, and this repository's proven structure | 2026-03-23 |
 
 ## Session Handoff
 - Last updated: 2026-03-23
-- Current task: move project current-doc files into `handbook/` while keeping `AGENTS.md` as the root router and preserving repo-local currentness.
+- Current task: promote `handbook/` from a repo-local layout into the shared scaffold and shared docs-sync defaults, then sync mirror and live copies.
 - What changed recently:
   - created project-level entry docs
   - created `docs/research/` and `docs/plans/` structure
@@ -82,7 +83,8 @@
   - added a project-local `.codex/config.toml` and then reduced the custom role set to a single cross-project `docs_syncer` role under `.codex/agents/`
   - added a stable global subagent policy to the managed and live global AGENTS layer, and kept only repository-specific `docs_syncer` rules in the project AGENTS layer
   - moved `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `GOLDEN_PRINCIPLES.md`, and `VERIFICATION.md` from the root into `handbook/`, and updated repo-local routing and verification paths accordingly
-- Next recommended step: decide whether the `handbook/` layout should stay repo-local or be generalized into the shared scaffold.
+  - updated the managed shared scaffold and the shared `current-docs-sync` skill so the default convention now keeps `AGENTS.md` in root and current docs under `handbook/`
+- Next recommended step: dogfood the updated shared scaffold on a fresh non-research repository and verify the bootstrapped paths feel natural in practice.
 - Known blocker: none currently.
 
 ## Notes

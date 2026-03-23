@@ -25,9 +25,11 @@
 - Project-local agent config check: `find .codex -maxdepth 2 -type f | sort`
 - Custom subagent link check: `rg -n 'config_file = ' .codex/config.toml`
 - Managed vs live global AGENTS check: `diff -u system/codex-home/AGENTS.md ~/.codex/AGENTS.md`
+- Managed vs live project scaffold check: `diff -ru system/codex-home/project-scaffolds ~/.codex/project-scaffolds`
 - Architecture or dependency check: `find docs/research -maxdepth 3 -type f | sort`
 - Managed shared skill mirror check: `find system/codex-home/skills -maxdepth 3 -type f | sort`
 - Live shared skill check: `find ~/.codex/skills -maxdepth 2 \\( -type d -o -type f \\) | sort`
+- Managed vs live `current-docs-sync` skill check: `diff -ru system/codex-home/skills/current-docs-sync ~/.codex/skills/current-docs-sync`
 - Managed system mirror check: `find system/codex-home -maxdepth 3 -type f | sort`
 - Lint or static analysis check: `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md handbook .codex docs memory system/codex-home --glob '!system/codex-home/project-scaffolds/**'`
 - Naming, schema, or boundary check: `find docs/plans -maxdepth 4 -type f | sort`
@@ -37,6 +39,7 @@
   - presence of project-local multi-agent config
   - a minimal project-local custom subagent surface
   - alignment between the managed global AGENTS mirror and the live global AGENTS copy
+  - alignment between the managed shared scaffold and the live project-scaffold copy
   - placeholder-free entry docs
   - placeholder-free project-local agent config files
   - placeholder-free managed shared skill files
@@ -51,6 +54,8 @@
   - `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, `handbook/GOLDEN_PRINCIPLES.md`, and `handbook/VERIFICATION.md` exist
   - project-local `.codex/config.toml` and referenced `.codex/agents/*.toml` files exist when this repository defines a custom subagent role
   - the managed global `system/codex-home/AGENTS.md` mirror matches the live `~/.codex/AGENTS.md` copy when global policy changed
+  - the managed project scaffold under `system/codex-home/project-scaffolds/` matches the live `~/.codex/project-scaffolds/` copy when shared scaffold defaults changed
+  - the managed `current-docs-sync` skill under `system/codex-home/skills/current-docs-sync/` matches the live `~/.codex/skills/current-docs-sync/` copy when shared docs-sync defaults changed
   - no scaffold placeholder text in project entry docs
   - no scaffold placeholder text in project-local agent config files
   - no scaffold placeholder text in managed shared skill files

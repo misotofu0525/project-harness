@@ -15,6 +15,9 @@
 - Moved `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `GOLDEN_PRINCIPLES.md`, and `VERIFICATION.md` into `handbook/`
 - Updated `AGENTS.md`, the moved handbook docs, `memory/active-tasks.json`, and affected research notes to the new paths
 - Confirmed that the user-level AGENTS file and its managed mirror do not need changes for this repo-local move
+- Updated the managed project scaffold so its default now keeps `AGENTS.md` in the root and places current docs under `handbook/`
+- Updated the managed `current-docs-sync` skill so its default assumptions and update matrix now match the `handbook/` scaffold
+- Synced the changed scaffold and shared-skill files from `system/codex-home/` into the live `~/.codex/` copy
 
 ### Test Results
 | Test | Expected | Actual | Status |
@@ -24,6 +27,8 @@
 | Handbook placement check | The four project current-doc files should exist under `handbook/` | `find handbook -maxdepth 1 -type f | sort` shows all four files | pass |
 | Placeholder scan | No scaffold placeholders remain in changed docs | `rg` exited with code 1 and no matches | pass |
 | Managed/live global AGENTS alignment | The mirror and live global AGENTS files should still match | `diff -u system/codex-home/AGENTS.md ~/.codex/AGENTS.md` exited with code 0 | pass |
+| Managed/live project scaffold alignment | The scaffold mirror and live copy should match after the convention change | `diff -ru system/codex-home/project-scaffolds ~/.codex/project-scaffolds` exited with code 0 | pass |
+| Managed/live `current-docs-sync` alignment | The skill mirror and live copy should match after the convention change | `diff -ru system/codex-home/skills/current-docs-sync ~/.codex/skills/current-docs-sync` exited with code 0 | pass |
 | Diff hygiene | No whitespace or patch-format issues | `git diff --check` exited with code 0 | pass |
 
 ### Errors

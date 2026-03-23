@@ -21,9 +21,9 @@
 - Current expectation: no change needed in either global AGENTS file unless we decide to generalize `handbook/` as a shared scaffold convention.
 
 ## Shared Asset Scope
-- The shared project scaffold under `system/codex-home/project-scaffolds/` still describes the current default convention with root-level project docs.
-- The shared `current-docs-sync` skill is written to handle projects that use either the default scaffold names or project-defined equivalents.
-- Confirmed decision: this task stays repo-local, so shared scaffold and shared skill assets remain unchanged unless the goal expands from local structure to shared convention design.
+- The shared project scaffold under `system/codex-home/project-scaffolds/` is now part of the change surface.
+- The shared `current-docs-sync` skill must move with the scaffold default, otherwise the bootstrap default and the docs-sync workflow would disagree.
+- Confirmed decision: the new shared default keeps `AGENTS.md` in the root and places the rest of the current docs under `handbook/`.
 
 ## Files Synced For This Move
 - `AGENTS.md`
@@ -34,3 +34,19 @@
 - `memory/active-tasks.json`
 - `docs/research/notes/openai-codex-best-practices-summary.zh.md`
 - `docs/research/notes/claude-code-workflow-comparison.zh.md`
+- `system/codex-home/project-scaffolds/HOW-TO-BOOTSTRAP.md`
+- `system/codex-home/project-scaffolds/project-AGENTS.template.md`
+- `system/codex-home/project-scaffolds/PROJECT_CONTEXT.template.md`
+- `system/codex-home/project-scaffolds/active-tasks.template.json`
+- `system/codex-home/skills/current-docs-sync/SKILL.md`
+- `system/codex-home/skills/current-docs-sync/references/update-matrix.md`
+- `~/.codex/project-scaffolds/HOW-TO-BOOTSTRAP.md`
+- `~/.codex/project-scaffolds/project-AGENTS.template.md`
+- `~/.codex/project-scaffolds/PROJECT_CONTEXT.template.md`
+- `~/.codex/project-scaffolds/active-tasks.template.json`
+- `~/.codex/skills/current-docs-sync/SKILL.md`
+- `~/.codex/skills/current-docs-sync/references/update-matrix.md`
+
+## User-Level AGENTS Relevance
+- No change needed in `~/.codex/AGENTS.md` or `system/codex-home/AGENTS.md`.
+- Reason: the global layer routes to the scaffold directory but does not define the scaffold's internal file layout.

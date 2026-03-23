@@ -1,10 +1,10 @@
-# Task Plan: Move project current docs into handbook
+# Task Plan: Make handbook the shared current-doc default
 
 ## Goal
-Move the repository's project-currentness docs out of the root into `handbook/`, keep `AGENTS.md` as the root entrypoint, sync all affected repo-local references, and confirm whether the user-level AGENTS layer needs any related change.
+Move the repository's project-currentness docs out of the root into `handbook/`, then promote that layout into the shared scaffold and shared docs-sync defaults while keeping managed and live copies synchronized.
 
 ## Current Phase
-Phase 4
+Complete
 
 ## Phases
 
@@ -22,21 +22,24 @@ Phase 4
 
 ### Phase 3: Currentness Sync
 - [x] Sync any affected repository-state docs, research notes, and task state
-- [x] Decide whether shared scaffold or shared skill assets should change for this repo-local move
+- [x] Promote the `handbook/` layout into the shared scaffold defaults
+- [x] Update the shared `current-docs-sync` skill to match the new default
 - [x] Record the user-level AGENTS impact decision
 - **Status:** complete
 
 ### Phase 4: Verification & Delivery
 - [x] Run structural, placeholder, and diff checks
 - [x] Confirm the new root layout and handbook paths
-- [ ] Report results and compatibility notes to the user
-- **Status:** in_progress
+- [x] Confirm managed and live scaffold plus shared-skill alignment
+- [x] Report results and compatibility notes to the user
+- **Status:** complete
 
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
 | Use `handbook/` instead of `project/` | `handbook/` describes repository operating docs better and avoids the generic ambiguity of `project/` |
-| Treat `handbook/` as a repo-local convention for now and leave shared scaffolds plus global AGENTS unchanged | This task changes only this repository's structure; shared assets should change only after a separate convention decision |
+| Promote `handbook/` into the shared scaffold and shared docs-sync defaults | The user explicitly wants the scaffold updated, and the new layout is now the intended cross-project default |
+| Leave the global AGENTS layer unchanged | Global AGENTS only points to the scaffold lookup location; it does not encode these project-local file paths |
 
 ## Errors Encountered
 | Error | Resolution |
