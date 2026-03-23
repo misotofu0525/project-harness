@@ -40,6 +40,13 @@
 - If the task produces durable research output, store it under `docs/research/notes/` or `docs/research/sources/`, not in the repository root.
 - Before declaring completion, verify that no temporary planning files remain in the repository root and that no scaffold placeholders remain in the entry docs.
 
+## Project Subagent Rules
+- This repository prefers built-in roles for exploration, review, and general execution work.
+- The only project-local custom subagent is `docs_syncer`.
+- Use `docs_syncer` only after repository structure, workflow, canonical paths, verification commands, or current project state changed enough to make the current docs stale.
+- `docs_syncer` may update `AGENTS.md`, `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `VERIFICATION.md`, closely related indexes, and task-state files needed to restore repository currentness.
+- After `docs_syncer` runs, execute the relevant checks from `VERIFICATION.md` before declaring completion.
+
 ## Project Hard Rules
 - Preserve source captures under `docs/research/sources/` and keep provenance metadata intact.
 - Keep the repository root reserved for high-signal entry docs only.
@@ -54,6 +61,7 @@
 ## Project-Specific Docs
 - Project-local Codex config: `.codex/config.toml`
 - Project-local custom subagent config: `.codex/agents/docs-syncer.toml`
+- Subagent design note: `docs/research/notes/subagent-definition-principles.zh.md`
 - Research index: `docs/research/index.zh.md`
 - Source captures: `docs/research/sources/`
 - Research notes: `docs/research/notes/`

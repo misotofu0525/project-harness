@@ -45,6 +45,10 @@
 - `system/codex-home/skills/`: version-controlled mirror of shared Codex skills intended for other projects
 
 ## Critical Flows
+- Subagent policy layering:
+  - starts at: stable delegation rules in the global AGENTS layer
+  - passes through: project-specific custom-role rules in the repository `AGENTS.md`
+  - writes to or affects: consistent subagent usage without overloading either layer
 - Local multi-agent task execution:
   - starts at: user request or parent agent decision
   - passes through: built-in roles by default, and `.codex/config.toml` plus `.codex/agents/docs-syncer.toml` when a current-doc sync action is needed
@@ -64,6 +68,7 @@
 
 ## Invariants
 - Root should contain only entry docs and intentionally high-signal project files.
+- Cross-project subagent delegation rules should live in the global AGENTS layer, while repository-specific custom subagent rules should live in the project AGENTS layer.
 - Project-local custom subagent roles should stay rare and should only exist when they express cross-project value that built-in roles do not cover well.
 - Preserved source captures must retain provenance metadata.
 - Task planning must live under `docs/plans/`, not in the repository root.

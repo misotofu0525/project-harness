@@ -23,11 +23,11 @@
       "id": "T001",
       "title": "Translate research conclusions into shared Codex workflows",
       "status": "active",
-      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects. The repository's `.codex/` setup has now been reduced to a minimal custom cross-project role set centered on `docs_syncer`, while built-in roles cover overlapping exploration and review work.",
-      "next_action": "Add a reusable task contract template and dogfood the minimal `docs_syncer`-centered subagent pattern on a real repository task.",
+      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects. The repository's `.codex/` setup is centered on `docs_syncer`, while generic subagent delegation rules now live in the global AGENTS layer and project-specific custom-role rules live in the project AGENTS layer.",
+      "next_action": "Add a reusable task contract template and dogfood the layered subagent policy on a real repository task.",
       "blocker": "",
       "created": "2026-03-11",
-      "updated": "2026-03-22"
+      "updated": "2026-03-23"
     }
   ]
 }

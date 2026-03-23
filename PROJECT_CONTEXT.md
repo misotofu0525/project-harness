@@ -11,6 +11,7 @@
 - Verification: `VERIFICATION.md`
 - Project-local Codex config: `.codex/config.toml`
 - Project-local custom subagent config: `.codex/agents/docs-syncer.toml`
+- Subagent design note: `docs/research/notes/subagent-definition-principles.zh.md`
 - Managed shared skills mirror: `system/codex-home/skills/`
 - Research index: `docs/research/index.zh.md`
 
@@ -66,10 +67,11 @@
 | Store shared Codex skills under `system/codex-home/skills/` and sync them to `~/.codex/skills/` | Keeps reusable cross-project workflow assets versioned in the research repo and usable in future projects | 2026-03-11 |
 | Store repository-specific multi-agent role definitions under project-local `.codex/` files | Keeps agent behavior versioned with the repository while leaving the global config thin | 2026-03-12 |
 | Keep only `docs_syncer` as a custom cross-project subagent role and rely on built-in roles for overlapping capabilities | Minimizes custom surface area while preserving the repository's durable docs-sync workflow | 2026-03-22 |
+| Keep generic subagent delegation rules in the global AGENTS layer and repository-specific custom subagent rules in the project AGENTS layer | Preserves context layering and keeps the project router practical | 2026-03-23 |
 
 ## Session Handoff
-- Last updated: 2026-03-22
-- Current task: reduce project-local custom subagents to the minimal cross-project set and sync the affected current docs.
+- Last updated: 2026-03-23
+- Current task: split subagent policy cleanly across the global and project AGENTS layers and sync the affected current docs.
 - What changed recently:
   - created project-level entry docs
   - created `docs/research/` and `docs/plans/` structure
@@ -77,8 +79,9 @@
   - mirrored selected `~/.codex` files into `system/codex-home/`
   - added the first shared skill at `system/codex-home/skills/current-docs-sync/` and synced it to `~/.codex/skills/current-docs-sync/`
   - added a project-local `.codex/config.toml` and then reduced the custom role set to a single cross-project `docs_syncer` role under `.codex/agents/`
-- Next recommended step: add a task contract template and dogfood the minimal custom subagent pattern on a real repository task.
-- Known blocker: no git remote is configured, so push-based workflow checks cannot be exercised from this repository right now.
+  - added a stable global subagent policy to the managed and live global AGENTS layer, and kept only repository-specific `docs_syncer` rules in the project AGENTS layer
+- Next recommended step: add a task contract template and dogfood the layered subagent policy on a real repository task.
+- Known blocker: none currently.
 
 ## Notes
 - Keep this file factual, current, and short.
