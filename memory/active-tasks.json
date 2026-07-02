@@ -23,11 +23,11 @@
       "id": "T001",
       "title": "Translate research conclusions into shared Codex workflows",
       "status": "active",
-      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects. The repository's `.codex/` setup is centered on `docs_syncer`, while generic subagent delegation rules now live in the global AGENTS layer and project-specific custom-role rules live in the project AGENTS layer.",
-      "next_action": "Add a reusable task contract template and dogfood the layered subagent policy on a real repository task.",
+      "context": "Global and project-level routing docs are in place. Research material has been organized. The first shared skill, `current-docs-sync`, now lives under `system/codex-home/skills/` and is synced to `~/.codex/skills/` for reuse in other projects. The repository's `.codex/` setup is centered on `docs_syncer`, while generic subagent delegation rules live in the global AGENTS layer and project-specific custom-role rules live in the project AGENTS layer. A shared `task-contract.template.md` scaffold and explicit delegation-policy wording were added after confirming that current Codex behavior does not auto-spawn subagents.",
+      "next_action": "Dogfood the explicit delegation contract on a real repository task and observe whether built-in subagent usage increases in practice.",
       "blocker": "",
       "created": "2026-03-11",
-      "updated": "2026-03-23"
+      "updated": "2026-04-09"
     }
   ]
 }

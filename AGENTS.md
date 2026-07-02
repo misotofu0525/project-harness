@@ -12,7 +12,7 @@
 - Short code and workflow taste guide: `handbook/GOLDEN_PRINCIPLES.md`
 - Verification entrypoint: `handbook/VERIFICATION.md`
 - Project-local Codex config: `.codex/config.toml`
-- Project-local custom subagent config: `.codex/agents/docs-syncer.toml`
+- Project-local custom subagent config: `.codex/agents/docs_syncer.toml`
 - Research index: `docs/research/index.zh.md`
 - Managed system mirror: `system/codex-home/`
 - Managed shared skills mirror: `system/codex-home/skills/`
@@ -24,7 +24,7 @@
 ## Load Order
 - Read `handbook/PROJECT_CONTEXT.md` first.
 - If the task affects repository structure, workflow design, or system boundaries, read `handbook/ARCHITECTURE.md` next.
-- If the task is about project-local multi-agent behavior, read `.codex/config.toml` first and then only the relevant custom role file under `.codex/agents/` when one exists.
+- If the task is about project-local multi-agent behavior, read `.codex/config.toml` first and then only the relevant standalone custom agent file under `.codex/agents/` when one exists.
 - If the task is about a managed shared skill, read the relevant `system/codex-home/skills/<skill>/SKILL.md` after the core entry docs.
 - If the task is complex, read the active task bundle in `docs/plans/active/` when it exists.
 - Within the active task bundle, read `task_plan.md` first and `findings.md` or `progress.md` only when needed.
@@ -37,11 +37,15 @@
 - If the task depends on external agent frameworks, APIs, or product behavior, verify against current official documentation before updating project guidance.
 - If the task changes repository structure or operating conventions, update `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, and `handbook/VERIFICATION.md` in the same turn.
 - If the task changes the managed global Codex policy, shared scaffolds, or shared skills, update the mirror under `system/codex-home/` and the live `~/.codex/` copy together unless the task explicitly says otherwise.
+- If the repository wants low-friction subagent use, express it through an explicit task contract or user instruction rather than assuming Codex will auto-spawn subagents.
 - If the task produces durable research output, store it under `docs/research/notes/` or `docs/research/sources/`, not in the repository root.
 - Before declaring completion, verify that no temporary planning files remain in the repository root and that no scaffold placeholders remain in the entry docs.
 
 ## Project Subagent Rules
 - This repository prefers built-in roles for exploration, review, and general execution work.
+- Current Codex behavior does not auto-spawn subagents, so this repository treats explicit delegation permission as part of task framing rather than as an implicit default.
+- For proactive delegation in this repo, prefer a task contract field such as `Delegation: allow built-in subagents for read-heavy exploration, independent verification, and low-coupling sidecar work.`
+- If a task strongly benefits from delegation but that permission is missing, ask a short opt-in question instead of silently assuming parallel agent work.
 - The only project-local custom subagent is `docs_syncer`.
 - Use `docs_syncer` only after repository structure, workflow, canonical paths, verification commands, or current project state changed enough to make the current docs stale.
 - `docs_syncer` may update `AGENTS.md`, `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, `handbook/VERIFICATION.md`, closely related indexes, and task-state files needed to restore repository currentness.
@@ -60,7 +64,7 @@
 
 ## Project-Specific Docs
 - Project-local Codex config: `.codex/config.toml`
-- Project-local custom subagent config: `.codex/agents/docs-syncer.toml`
+- Project-local custom subagent config: `.codex/agents/docs_syncer.toml`
 - Subagent design note: `docs/research/notes/subagent-definition-principles.zh.md`
 - Research index: `docs/research/index.zh.md`
 - Source captures: `docs/research/sources/`

@@ -21,6 +21,7 @@ Add the next layer only when the project is active enough to benefit from it:
 - Copy `ARCHITECTURE.template.md` to `handbook/ARCHITECTURE.md` when the codebase is no longer trivial.
 - Copy `GOLDEN_PRINCIPLES.template.md` to `handbook/GOLDEN_PRINCIPLES.md` when code taste or architectural preferences need a stable home.
 - Copy `VERIFICATION.template.md` to `handbook/VERIFICATION.md` when the project has more than one meaningful check.
+- Copy `task-contract.template.md` when the project wants reusable task briefs or low-friction explicit permission for delegated or parallel agent work.
 - Copy `plan.template.md` into `docs/plans/active/<task>/task_plan.md` only for complex tasks.
 - If you use a multi-file planning workflow, store `findings.md` and `progress.md` in the same task directory.
 - Move finished task plan directories from `docs/plans/active/<task>/` to `docs/plans/completed/<task>/`.
@@ -51,6 +52,7 @@ Optional later:
 - `handbook/ARCHITECTURE.md`
 - `handbook/GOLDEN_PRINCIPLES.md`
 - `handbook/VERIFICATION.md`
+- `task-contract.template.md` adapted for the project if the team wants a standard task brief or explicit delegation contract
 - `docs/plans/active/`
 - `docs/plans/completed/`
 - project-specific workflow docs or references
@@ -72,3 +74,4 @@ File templates are better for:
 2. Add `handbook/ARCHITECTURE.md` once the codebase has multiple moving parts.
 3. Add `handbook/VERIFICATION.md` once verification is no longer a single obvious command.
 4. Add task-scoped plan artifacts only for non-trivial work.
+5. Add a task contract once the team wants reusable `Goal / Context / Constraints / Done when / Delegation` framing.

@@ -23,8 +23,10 @@
 ## Structural Checks
 - Current-doc placement check: `find handbook -maxdepth 1 -type f | sort`
 - Project-local agent config check: `find .codex -maxdepth 2 -type f | sort`
-- Custom subagent link check: `rg -n 'config_file = ' .codex/config.toml`
+- Custom subagent global-settings check: `rg -n '^\\[agents\\]$|^max_threads = |^max_depth = ' .codex/config.toml`
+- Custom subagent schema check: `rg -n '^name = \"docs_syncer\"$|^description = |^developer_instructions = \"\"\"$' .codex/agents/docs_syncer.toml`
 - Managed vs live global AGENTS check: `diff -u system/codex-home/AGENTS.md ~/.codex/AGENTS.md`
+- Shared scaffold inventory check: `find system/codex-home/project-scaffolds -maxdepth 1 -type f | sort`
 - Managed vs live project scaffold check: `diff -ru system/codex-home/project-scaffolds ~/.codex/project-scaffolds`
 - Architecture or dependency check: `find docs/research -maxdepth 3 -type f | sort`
 - Managed shared skill mirror check: `find system/codex-home/skills -maxdepth 3 -type f | sort`
@@ -39,6 +41,7 @@
   - presence of project-local multi-agent config
   - a minimal project-local custom subagent surface
   - alignment between the managed global AGENTS mirror and the live global AGENTS copy
+  - presence of a shared task-contract scaffold for explicit delegation when that workflow is in use
   - alignment between the managed shared scaffold and the live project-scaffold copy
   - placeholder-free entry docs
   - placeholder-free project-local agent config files
@@ -52,8 +55,9 @@
   - no root-level `task_plan.md`, `findings.md`, or `progress.md`
   - no root-level `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `GOLDEN_PRINCIPLES.md`, or `VERIFICATION.md`
   - `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, `handbook/GOLDEN_PRINCIPLES.md`, and `handbook/VERIFICATION.md` exist
-  - project-local `.codex/config.toml` and referenced `.codex/agents/*.toml` files exist when this repository defines a custom subagent role
+  - project-local `.codex/config.toml` and `.codex/agents/docs_syncer.toml` exist when this repository defines a custom subagent role
   - the managed global `system/codex-home/AGENTS.md` mirror matches the live `~/.codex/AGENTS.md` copy when global policy changed
+  - `system/codex-home/project-scaffolds/task-contract.template.md` exists and the live `~/.codex/project-scaffolds/task-contract.template.md` copy matches it when the shared delegation-contract scaffold changed
   - the managed project scaffold under `system/codex-home/project-scaffolds/` matches the live `~/.codex/project-scaffolds/` copy when shared scaffold defaults changed
   - the managed `current-docs-sync` skill under `system/codex-home/skills/current-docs-sync/` matches the live `~/.codex/skills/current-docs-sync/` copy when shared docs-sync defaults changed
   - no scaffold placeholder text in project entry docs
@@ -66,8 +70,8 @@
   - provenance metadata inside preserved source captures
 
 ## Failure Triage
-- First file or log to inspect: `.codex/config.toml`
-- Common failure mode: changed subagent policy in one AGENTS layer without syncing the corresponding mirror or current-doc layer
+- First file or log to inspect: `.codex/agents/docs_syncer.toml`
+- Common failure mode: leaving the repository on the old `config_file`-based layout or drifting the documented agent path away from the actual standalone file
 - Recovery step: fix paths first, then re-run the structural checks above
 
 ## Notes

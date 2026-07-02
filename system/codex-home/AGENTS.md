@@ -17,8 +17,11 @@
 
 ## Subagent Policy
 - Use subagents to isolate noisy exploration, local skill or MCP loads, independent verification, or low-coupling parallel work.
+- Current Codex behavior requires an explicit delegation trigger. Do not assume subagents will spawn automatically from generic task wording alone.
 - Do not spawn subagents when the task is too small, cannot be summarized cleanly, depends on tightly shared intermediate state, or is likely to create write conflicts.
 - Delegate only when `subagent benefit > delegation cost`.
+- If a task strongly benefits from delegation but permission is missing, ask a short opt-in question early or point the user to a task contract that explicitly allows delegated or parallel agent work.
+- If a task contract explicitly allows delegation, treat that as permission to use built-in subagents when `subagent benefit > delegation cost`.
 - Prefer built-in roles by default.
 - Define custom roles only when a pattern repeats across projects, has stable boundaries, needs a fixed context package, and built-in roles are not enough.
 - Subagents should return compressed conclusions, evidence, and next-step recommendations rather than raw exploration trails unless the user asks for the raw trail.

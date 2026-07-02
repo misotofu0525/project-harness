@@ -10,7 +10,7 @@
 - Golden principles: `handbook/GOLDEN_PRINCIPLES.md`
 - Verification: `handbook/VERIFICATION.md`
 - Project-local Codex config: `.codex/config.toml`
-- Project-local custom subagent config: `.codex/agents/docs-syncer.toml`
+- Project-local custom subagent config: `.codex/agents/docs_syncer.toml`
 - Subagent design note: `docs/research/notes/subagent-definition-principles.zh.md`
 - Managed shared skills mirror: `system/codex-home/skills/`
 - Research index: `docs/research/index.zh.md`
@@ -45,6 +45,7 @@
   - planning bundle cleanup
   - project-local multi-agent config
   - minimal custom subagent design for cross-project reuse
+  - explicit delegation contracts for low-friction built-in subagent use
   - version-controlled mirror of global Codex policy and scaffolds
   - shared workflow and skill design grounded in collected material
 - Out-of-scope work:
@@ -70,10 +71,12 @@
 | Keep generic subagent delegation rules in the global AGENTS layer and repository-specific custom subagent rules in the project AGENTS layer | Preserves context layering and keeps the project router practical | 2026-03-23 |
 | Keep only `AGENTS.md` at the root as the project router and move project current-doc files into `handbook/` | Separates repository operating docs from research outputs while preserving a standard root entrypoint | 2026-03-23 |
 | Make `handbook/` the default location for project current docs in the shared scaffold and sync the live scaffold plus current-docs-sync skill to match | Aligns bootstrap defaults, shared docs-sync guidance, and this repository's proven structure | 2026-03-23 |
+| Keep `.codex/config.toml` limited to global agent settings and define `docs_syncer` as a standalone `.codex/agents/docs_syncer.toml` file | Matches the current official Codex custom subagent schema and reduces ambiguous split configuration | 2026-03-23 |
+| Handle "proactive" subagent use through explicit delegation contracts rather than assumed automatic spawning | Current official Codex behavior requires explicit delegation triggers, so the durable fix is to reduce delegation friction instead of relying on implicit auto-spawn | 2026-04-09 |
 
 ## Session Handoff
-- Last updated: 2026-03-23
-- Current task: promote `handbook/` from a repo-local layout into the shared scaffold and shared docs-sync defaults, then sync mirror and live copies.
+- Last updated: 2026-04-09
+- Current task: align the repository's subagent expectations with current official Codex behavior by adding explicit delegation-contract guidance and shared scaffolds.
 - What changed recently:
   - created project-level entry docs
   - created `docs/research/` and `docs/plans/` structure
@@ -84,8 +87,11 @@
   - added a stable global subagent policy to the managed and live global AGENTS layer, and kept only repository-specific `docs_syncer` rules in the project AGENTS layer
   - moved `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `GOLDEN_PRINCIPLES.md`, and `VERIFICATION.md` from the root into `handbook/`, and updated repo-local routing and verification paths accordingly
   - updated the managed shared scaffold and the shared `current-docs-sync` skill so the default convention now keeps `AGENTS.md` in root and current docs under `handbook/`
-- Next recommended step: dogfood the updated shared scaffold on a fresh non-research repository and verify the bootstrapped paths feel natural in practice.
-- Known blocker: none currently.
+  - refactored the local `docs_syncer` custom subagent to the current standalone agent-file schema at `.codex/agents/docs_syncer.toml`
+  - added an explicit delegation policy to the managed and live global AGENTS layer, plus a shared `task-contract.template.md` scaffold for low-friction delegated or parallel work
+  - updated the repository docs and research notes so they no longer assume Codex will auto-spawn subagents
+- Next recommended step: dogfood the new delegation contract on a real repository task and measure whether it materially increases built-in subagent usage.
+- Known blocker: the local `codex exec` smoke check is currently blocked by a `~/.codex/state_5.sqlite` migration mismatch in Codex CLI 0.114.0.
 
 ## Notes
 - Keep this file factual, current, and short.

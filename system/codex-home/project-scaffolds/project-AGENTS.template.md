@@ -29,6 +29,7 @@
 - If the task is debugging or failure investigation, use the debugging workflow.
 - If the task is near completion, use the verification workflow before declaring done.
 - If the task is being resumed after a gap, re-read `handbook/PROJECT_CONTEXT.md` and active task state first.
+- If the project expects frequent delegated or parallel work, add a lightweight task-contract convention with an explicit `Delegation` field instead of assuming subagents will spawn automatically.
 - If the task is straightforward, work directly.
 
 ## Project Hard Rules

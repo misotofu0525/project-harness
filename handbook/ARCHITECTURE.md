@@ -24,6 +24,7 @@
   - markdown-first research and curation
   - ad hoc command-line verification
   - project-local Codex configuration with one custom docs-sync subagent layered on top of built-in roles
+  - explicit task contracts when the workflow wants low-friction delegated or parallel work
   - managed shared Codex skills or scripts when workflows stabilize
 - Entry points:
   - `AGENTS.md`
@@ -31,6 +32,7 @@
   - `handbook/ARCHITECTURE.md`
   - `handbook/VERIFICATION.md`
   - `.codex/config.toml`
+  - `.codex/agents/docs_syncer.toml`
   - `docs/research/index.zh.md`
 - Background jobs or async workers:
   - none
@@ -53,8 +55,8 @@
   - passes through: project-specific custom-role rules in the repository `AGENTS.md`
   - writes to or affects: consistent subagent usage without overloading either layer
 - Local multi-agent task execution:
-  - starts at: user request or parent agent decision
-  - passes through: built-in roles by default, and `.codex/config.toml` plus `.codex/agents/docs-syncer.toml` when a current-doc sync action is needed
+  - starts at: a user request or explicit task contract that grants delegated or parallel work
+  - passes through: built-in roles by default, and `.codex/config.toml` plus the standalone `.codex/agents/docs_syncer.toml` file when a current-doc sync action is needed
   - writes to or affects: a single scoped documentation update under `handbook/` plus related indexes or task state when the custom role is used
 - Source capture:
   - starts at: external article, paper, repo, or official documentation
@@ -73,6 +75,7 @@
 - Root should contain `AGENTS.md` and only intentionally high-signal top-level project files.
 - Project currentness docs should live under `handbook/`, not in the root.
 - The shared project scaffold should default to `AGENTS.md` in the root and the rest of the current docs under `handbook/`.
+- Current Codex behavior does not automatically spawn subagents, so projects that want frequent delegation should encode explicit delegation permission in task contracts or user instructions.
 - Cross-project subagent delegation rules should live in the global AGENTS layer, while repository-specific custom subagent rules should live in the project AGENTS layer.
 - Project-local custom subagent roles should stay rare and should only exist when they express cross-project value that built-in roles do not cover well.
 - Preserved source captures must retain provenance metadata.

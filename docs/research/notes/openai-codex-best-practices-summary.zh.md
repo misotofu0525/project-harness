@@ -125,22 +125,23 @@
 - 顶层 [AGENTS.md](/Users/misotofu/Documents/workspace/context-engineering/AGENTS.md) 已经是路由器，而不是百科全书
 - 复杂任务已经使用 `docs/plans/active/<task>/` 做文件化 planning
 - [handbook/VERIFICATION.md](/Users/misotofu/Documents/workspace/context-engineering/handbook/VERIFICATION.md) 已经把“完成前验证”写成显式流程
-- 项目已经把 repo-specific agent behavior 放进 [`.codex/config.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/config.toml)
+- 项目已经把 repo-specific agent behavior 放进 [`.codex/config.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/config.toml) 和 [`.codex/agents/docs_syncer.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/agents/docs_syncer.toml)
 - 本地 multi-agent 角色已经做成“主 agent 决策 + 窄职责子 agent + 单一写入角色”的收口设计
 
 ### 还存在的差距或可加强点
 
 - 还缺一个更显式的 task brief / contract 模板，把 `Goal / Context / Constraints / Done when` 固化下来
+- 当前官方 subagent 行为还要求显式 delegation trigger，因此 task brief 不只是“把任务说清楚”，也承担“明确授权并行委派”的作用
 - 还没有本仓库自己的 multi-agent dogfood 样例，缺少真实任务层面的 smoke test
 - 当前共享 skill 的 repo 内版本化路径是 `system/codex-home/skills/`，这更像“受管镜像”，和官方文档提到的 repo 级 `.agents/skills/` 运行时路径并不完全一致
-- 本仓库的 `.codex/config.toml` 目前只配置了角色边界，还没有把顶层 sandbox / approval 默认策略显式写进项目配置
+- 本仓库的 `.codex/config.toml` 目前只保留全局 agent 边界，角色细节已经下沉到 [`.codex/agents/docs_syncer.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/agents/docs_syncer.toml)，但仍然没有把顶层 sandbox / approval 默认策略显式写进项目配置
 - 还没有类似 `code_review.md` 这种可被 `AGENTS.md` 引用的稳定 review checklist
 
 ## 对后续工作的建议优先级
 
 ### P1
 
-- 加一个轻量 task brief 模板，专门承载 `Goal / Context / Constraints / Done when`
+- 加一个轻量 task brief 模板，专门承载 `Goal / Context / Constraints / Done when / Delegation`
 - 选一个真实仓库任务 dogfood 当前 multi-agent 配置
 
 ### P2

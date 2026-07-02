@@ -1,3 +1,5 @@
+name = "docs_syncer"
+description = "Single write-capable documentation worker for small, explicit repo-currentness updates after the decision is clear."
 model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 developer_instructions = """

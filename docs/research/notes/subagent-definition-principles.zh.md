@@ -120,6 +120,19 @@ subagent 的核心价值不是“多开几个 agent”，而是做 `context fire
 - 输出可以汇总
 - 不需要共享大量中间状态
 
+### 5. 当前 Codex 还需要显式 delegation trigger
+
+即使上面几类任务都很适合委派，在当前官方 Codex 行为下，`spawn subagent` 仍然不是自动动作。
+
+这意味着：
+
+- “值得委派” 和 “会自动委派” 不是一回事
+- 没有显式授权时，不应该假定系统会自己开 subagent
+- 更合理的修正方式是：
+  - 提前获得显式 delegation permission
+  - 或在任务一开始就用简短问题请求授权
+  - 或把授权固化到 task contract 里
+
 ## 四、什么情况下不应该使用 subagent
 
 ### 1. 子任务太小
@@ -389,6 +402,13 @@ subagent 的核心价值不是“多开几个 agent”，而是做 `context fire
 - 让主线程不必长期携带整套当前性同步逻辑
 - 让分层上下文系统在多项目里保持一致
 
+同时还要补一层现实约束：
+
+- 当前 Codex 产品不会自动 spawn subagent
+- 所以仓库方法论不能只停留在“什么时候值得委派”
+- 还需要一套低摩擦的显式 delegation contract
+- 否则主 agent 即使判断“该委派”，也可能因为没有授权而保持单线程执行
+
 ## 最终判断
 
 subagent 最重要的价值是 `隔离局部高熵上下文`。
@@ -397,7 +417,8 @@ custom subagent role 最重要的价值是 `沉淀跨项目可复用的上下文
 
 因此：
 
-- `spawn subagent` 应该相对常见
+- 在显式授权已经存在时，`spawn subagent` 应该相对常见
+- 没有显式授权时，更好的默认动作是主动提出 delegation 建议，而不是假定会自动委派
 - `define custom role` 应该相对稀少
 
 真正值得长期保留成 custom role 的，通常不是“能力名字”，而是“治理动作”。 
