@@ -1,0 +1,7 @@
+version = 1
+task_root = "docs/plans"
+context_index = "docs/agent/index.md"
+
+[verification]
+fast = []
+full = []

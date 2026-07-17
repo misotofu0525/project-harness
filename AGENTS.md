@@ -1,78 +1,76 @@
-# Project rules for context-engineering
+# Project Harness Agent Kernel
 
 ## Purpose
-- This repository is a research project for exploring harness engineering, context engineering, and Codex workflow design.
-- Keep the root thin and predictable.
-- Load only the minimum project context needed for the current task.
 
-## Canonical Paths
-- Project entrypoint: `AGENTS.md`
-- Project state: `handbook/PROJECT_CONTEXT.md`
-- Short architecture map: `handbook/ARCHITECTURE.md`
-- Short code and workflow taste guide: `handbook/GOLDEN_PRINCIPLES.md`
-- Verification entrypoint: `handbook/VERIFICATION.md`
-- Project-local Codex config: `.codex/config.toml`
-- Project-local custom subagent config: `.codex/agents/docs_syncer.toml`
-- Research index: `docs/research/index.zh.md`
-- Managed system mirror: `system/codex-home/`
-- Managed shared skills mirror: `system/codex-home/skills/`
-- Cross-session task state: `memory/active-tasks.json`
-- Active plan bundle: `docs/plans/active/<task>/`
-- Active plan file: `docs/plans/active/<task>/task_plan.md`
-- Completed plan bundles: `docs/plans/completed/<task>/`
+- This repository builds a portable project layer for Codex and Claude Code.
+- Keep the root entrypoint small and route to scoped context only when needed.
+- The three stable capabilities are Context Routing, Task Continuity, and Verified Completion.
 
-## Load Order
-- Read `handbook/PROJECT_CONTEXT.md` first.
-- If the task affects repository structure, workflow design, or system boundaries, read `handbook/ARCHITECTURE.md` next.
-- If the task is about project-local multi-agent behavior, read `.codex/config.toml` first and then only the relevant standalone custom agent file under `.codex/agents/` when one exists.
-- If the task is about a managed shared skill, read the relevant `system/codex-home/skills/<skill>/SKILL.md` after the core entry docs.
-- If the task is complex, read the active task bundle in `docs/plans/active/` when it exists.
-- Within the active task bundle, read `task_plan.md` first and `findings.md` or `progress.md` only when needed.
-- If the task depends on earlier research outputs, read `docs/research/index.zh.md` and only the relevant source or note files.
-- If the task is about Codex global policy, shared scaffolds, or shared skills, read `system/codex-home/` rather than assuming `~/.codex/` is the only tracked source.
-- If the work spans sessions, read `memory/active-tasks.json` when it exists.
+## Always
 
-## Required Procedures
-- If the task is multi-step research, repository restructuring, or workflow design, use the planning workflow and keep the active task bundle current.
-- If the task depends on external agent frameworks, APIs, or product behavior, verify against current official documentation before updating project guidance.
-- If the task changes repository structure or operating conventions, update `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, and `handbook/VERIFICATION.md` in the same turn.
-- If the task changes the managed global Codex policy, shared scaffolds, or shared skills, update the mirror under `system/codex-home/` and the live `~/.codex/` copy together unless the task explicitly says otherwise.
-- If the repository wants low-friction subagent use, express it through an explicit task contract or user instruction rather than assuming Codex will auto-spawn subagents.
-- If the task produces durable research output, store it under `docs/research/notes/` or `docs/research/sources/`, not in the repository root.
-- Before declaring completion, verify that no temporary planning files remain in the repository root and that no scaffold placeholders remain in the entry docs.
+- Inspect the existing implementation before editing.
+- Keep changes scoped to the current request.
+- Search before naming APIs, commands, configuration fields, or paths.
+- Separate research from implementation until the solution is supported by evidence.
+- Keep diffs reviewable and consistent with existing style.
+- Never expose secrets, credentials, private keys, or environment values.
+- Do not claim completion without fresh verification evidence.
 
-## Project Subagent Rules
-- This repository prefers built-in roles for exploration, review, and general execution work.
-- Current Codex behavior does not auto-spawn subagents, so this repository treats explicit delegation permission as part of task framing rather than as an implicit default.
-- For proactive delegation in this repo, prefer a task contract field such as `Delegation: allow built-in subagents for read-heavy exploration, independent verification, and low-coupling sidecar work.`
-- If a task strongly benefits from delegation but that permission is missing, ask a short opt-in question instead of silently assuming parallel agent work.
-- The only project-local custom subagent is `docs_syncer`.
-- Use `docs_syncer` only after repository structure, workflow, canonical paths, verification commands, or current project state changed enough to make the current docs stale.
-- `docs_syncer` may update `AGENTS.md`, `handbook/PROJECT_CONTEXT.md`, `handbook/ARCHITECTURE.md`, `handbook/VERIFICATION.md`, closely related indexes, and task-state files needed to restore repository currentness.
-- After `docs_syncer` runs, execute the relevant checks from `handbook/VERIFICATION.md` before declaring completion.
+## Context Routing
 
-## Project Hard Rules
-- Preserve source captures under `docs/research/sources/` and keep provenance metadata intact.
-- Keep the repository root reserved for high-signal entry docs only.
-- Prefer moving or archiving temporary files over leaving duplicates in multiple locations.
-- Use explicit file paths and source provenance when summarizing research conclusions.
+- For non-trivial work, read `docs/agent/index.md`.
+- Load only modules whose `Read when` conditions match the current task.
+- Read current code and configuration for facts that are cheap to observe.
+- Store only stable, decision-relevant constraints in context modules.
+- Do not load every module by default.
+
+## Task Continuity
+
+- Use a Journal for long, research-heavy, cross-session, or compaction-prone work.
+- Store one task per `docs/plans/active/<task-id>/` directory.
+- Keep `task_plan.md`, `findings.md`, and `progress.md` together.
+- Resolve an explicit `PLAN_ID` first.
+- If exactly one active Journal exists, it may be restored automatically.
+- If several active Journals exist without `PLAN_ID`, report the ambiguity and stop guessing.
+- If no active Journal exists, treat ordinary short work as a normal task.
+
+## Checkpoints
+
+- Treat the Journal as durable task memory, not a live task-status service.
+- Update Latest Checkpoint after phases, important decisions or discoveries, meaningful failures, pauses, compaction preparation, and finish preparation.
+- Do not log every tool call or file write.
+- Before a major decision or after stale context, re-read the relevant Journal files.
+
+## Completion
+
+- Use the `finish-task` workflow for Journal-backed delivery.
+- Check Done When against observable evidence.
+- Run the configured verification commands.
+- Review the complete diff for scope, correctness, accidental changes, and secrets.
+- Review whether stable project context changed.
+- Record verification, diff review, and context review in `progress.md`.
+- Archive the Journal only after every finish prerequisite passes.
+
+## Project Boundaries
+
+- Preserve source captures and provenance under `docs/research/sources/`.
+- Keep synthesized research under `docs/research/notes/`.
+- Keep canonical shared templates and deterministic scripts under `shared/`.
+- Keep platform packaging differences under `plugins/`.
+- Do not add a database, task manager, orchestration runtime, custom subagent, or user-Home mirror.
+- Do not modify live user-Home configuration as part of repository work.
+
+## Platform Adapters
+
+- Keep shared Journal semantics identical across Codex and Claude Code.
+- Keep manifests, hook schemas, environment variables, and context injection platform-specific.
+- Use SessionStart and PreCompact for restoration and reminders.
+- Do not treat ordinary Stop hooks as project-level completion gates.
+- Re-sync packaged runtime copies after changing canonical shared assets.
 
 ## Verification
-- Canonical verification doc: `handbook/VERIFICATION.md`
-- Fastest relevant check: see `handbook/VERIFICATION.md`
-- Full verification when needed: see `handbook/VERIFICATION.md`
 
-## Project-Specific Docs
-- Project-local Codex config: `.codex/config.toml`
-- Project-local custom subagent config: `.codex/agents/docs_syncer.toml`
-- Subagent design note: `docs/research/notes/subagent-definition-principles.zh.md`
-- Research index: `docs/research/index.zh.md`
-- Source captures: `docs/research/sources/`
-- Research notes: `docs/research/notes/`
-- Managed Codex home mirror: `system/codex-home/`
-- Managed shared skills mirror: `system/codex-home/skills/`
-- Completed research plans: `docs/plans/completed/`
-
-## Notes
-- This project is markdown-first and research-first.
-- Keep this file thin enough that reading it is cheap.
+- Read `docs/agent/verification.md` before final verification or when checks change.
+- Use `.harness.toml` as the machine-readable command source.
+- Confirm no temporary planning files exist in the repository root.
+- Confirm no stale placeholders or local absolute links remain in distributable files.

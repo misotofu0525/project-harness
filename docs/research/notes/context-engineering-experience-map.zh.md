@@ -1,8 +1,8 @@
 # Context Engineering 统一经验地图
 
-- 来源 1: [/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/how-to-be-a-world-class-agentic-engineer.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/how-to-be-a-world-class-agentic-engineer.md)
-- 来源 2: [/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/2512.05470-summary.zh.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/2512.05470-summary.zh.md)
-- 来源 3: [/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/claude-code-workflow-comparison.zh.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/claude-code-workflow-comparison.zh.md)
+- 来源 1: [how-to-be-a-world-class-agentic-engineer.md](../sources/how-to-be-a-world-class-agentic-engineer.md)
+- 来源 2: [2512.05470-summary.zh.md](2512.05470-summary.zh.md)
+- 来源 3: [claude-code-workflow-comparison.zh.md](claude-code-workflow-comparison.zh.md)
 
 ## 如何读这份文档
 

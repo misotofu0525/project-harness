@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Memory"
+  short_description: "Create and restore isolated task Journals"
+  default_prompt: "Use $task-memory to create or restore a Journal for this long task."

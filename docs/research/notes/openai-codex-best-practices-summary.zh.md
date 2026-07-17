@@ -1,6 +1,6 @@
 # OpenAI Codex Best Practices 调研摘要
 
-- 来源: [openai-codex-best-practices-2026-03-12.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/openai-codex-best-practices-2026-03-12.md)
+- 来源: [openai-codex-best-practices-2026-03-12.md](../sources/openai-codex-best-practices-2026-03-12.md)
 - 官方页面: `https://developers.openai.com/codex/learn/best-practices`
 - 调研日期: `2026-03-12`
 
@@ -120,45 +120,22 @@
 
 ## 对这个仓库最相关的结论
 
-### 已经和官方思路高度一致的点
+> 2026-07-17 更新：下面是 Project Harness 重构后的仓库映射；原先的 handbook、custom subagent 与 Home mirror 已退役。
 
-- 顶层 [AGENTS.md](/Users/misotofu/Documents/workspace/context-engineering/AGENTS.md) 已经是路由器，而不是百科全书
-- 复杂任务已经使用 `docs/plans/active/<task>/` 做文件化 planning
-- [handbook/VERIFICATION.md](/Users/misotofu/Documents/workspace/context-engineering/handbook/VERIFICATION.md) 已经把“完成前验证”写成显式流程
-- 项目已经把 repo-specific agent behavior 放进 [`.codex/config.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/config.toml) 和 [`.codex/agents/docs_syncer.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/agents/docs_syncer.toml)
-- 本地 multi-agent 角色已经做成“主 agent 决策 + 窄职责子 agent + 单一写入角色”的收口设计
+### 已吸收进 Project Harness 的点
 
-### 还存在的差距或可加强点
+- 顶层 [AGENTS.md](../../../AGENTS.md) 是小型 Kernel 和 Router，而不是百科全书。
+- 复杂任务使用 `docs/plans/active/<task-id>/` 下的三文件 Journal，并以 Done When 固化完成条件。
+- [docs/agent/verification.md](../../agent/verification.md) 和 `.harness.toml` 把完成前验证拆成 scoped context 与机器命令。
+- 重复流程已沉淀为 `setup-project`、`task-memory` 与 `finish-task` Skills。
+- Context Routing、Task Continuity 与 Verified Completion 形成从上下文到恢复、再到交付验证的闭环。
 
-- 还缺一个更显式的 task brief / contract 模板，把 `Goal / Context / Constraints / Done when` 固化下来
-- 当前官方 subagent 行为还要求显式 delegation trigger，因此 task brief 不只是“把任务说清楚”，也承担“明确授权并行委派”的作用
-- 还没有本仓库自己的 multi-agent dogfood 样例，缺少真实任务层面的 smoke test
-- 当前共享 skill 的 repo 内版本化路径是 `system/codex-home/skills/`，这更像“受管镜像”，和官方文档提到的 repo 级 `.agents/skills/` 运行时路径并不完全一致
-- 本仓库的 `.codex/config.toml` 目前只保留全局 agent 边界，角色细节已经下沉到 [`.codex/agents/docs_syncer.toml`](/Users/misotofu/Documents/workspace/context-engineering/.codex/agents/docs_syncer.toml)，但仍然没有把顶层 sandbox / approval 默认策略显式写进项目配置
-- 还没有类似 `code_review.md` 这种可被 `AGENTS.md` 引用的稳定 review checklist
+### 仍然成立的边界
 
-## 对后续工作的建议优先级
-
-### P1
-
-- 加一个轻量 task brief 模板，专门承载 `Goal / Context / Constraints / Done when / Delegation`
-- 选一个真实仓库任务 dogfood 当前 multi-agent 配置
-
-### P2
-
-- 决定这个仓库是否要增加 repo 级 `.agents/skills/` 入口，还是继续坚持 `system/codex-home/skills/` 作为研究型镜像
-- 给 review 流程补一个可复用 checklist 文档
-
-### P3
-
-- 等这些流程稳定之后，再考虑 automation，而不是提前自动化
+- subagent 必须基于明确任务边界和授权使用，不应被包装成 Harness 顶层抽象。
+- automation 仍然应晚于已经手工跑顺并可验证的 Skill。
+- 外部高频变化数据仍适合通过 MCP 或平台 Plugin 接入，而不是写入常驻项目上下文。
 
 ## 最终判断
 
-如果把这篇官方文档和当前仓库放在一起看，方向基本是对的。
-
-最需要补的，不是更多规则，而是三件事：
-
-- 把任务 contract 再写清楚一点
-- 把 multi-agent workflow 真跑起来并复盘
-- 把 skill/runtime 布局和官方路径约定再对齐一次
+如果把这篇官方文档和当前 Project Harness 放在一起看，核心方向仍然是：入口要小、任务要有明确完成条件、重复方法要变成 Skill、交付必须有测试和 diff review。当前实现把这些结论收敛成项目级 Harness，而不是继续扩展 Agent 概念。

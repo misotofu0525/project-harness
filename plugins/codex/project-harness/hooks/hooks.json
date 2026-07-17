@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/lib/restore-plan.py\" --hook",
+            "statusMessage": "Restoring Project Harness checkpoint"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/lib/pre-compact.py\" --hook",
+            "statusMessage": "Checking Journal checkpoint before compaction"
+          }
+        ]
+      }
+    ]
+  }
+}

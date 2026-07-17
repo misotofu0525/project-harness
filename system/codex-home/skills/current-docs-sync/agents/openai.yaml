@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sync Current Docs"
-  short_description: "Keep project entry docs aligned after repo changes"
-  default_prompt: "Use $current-docs-sync to sync the current repository docs after structure or workflow changes."

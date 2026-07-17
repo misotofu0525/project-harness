@@ -1,0 +1,4 @@
+interface:
+  display_name: "Setup Project Harness"
+  short_description: "Install the minimal Project Harness project layer"
+  default_prompt: "Use $setup-project to install Project Harness in this repository."

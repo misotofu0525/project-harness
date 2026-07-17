@@ -1,8 +1,8 @@
 # Claude Code Workflow 对照分析
 
 - 目标仓库: <https://github.com/runesleo/claude-code-workflow>
-- 对照材料 1: [/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/how-to-be-a-world-class-agentic-engineer.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/how-to-be-a-world-class-agentic-engineer.md)
-- 对照材料 2: [/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/2512.05470-summary.zh.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/2512.05470-summary.zh.md)
+- 对照材料 1: [how-to-be-a-world-class-agentic-engineer.md](../sources/how-to-be-a-world-class-agentic-engineer.md)
+- 对照材料 2: [2512.05470-summary.zh.md](2512.05470-summary.zh.md)
 
 ## 结论先行
 

@@ -1,0 +1,26 @@
+{
+  "name": "project-harness",
+  "version": "0.1.0",
+  "description": "A portable project layer for precise context routing, durable task Journals, and verified completion.",
+  "author": {
+    "name": "misotofu0525",
+    "url": "https://github.com/misotofu0525"
+  },
+  "repository": "https://github.com/misotofu0525/context-engineering",
+  "license": "MIT",
+  "keywords": ["codex", "context-engineering", "task-memory", "verification"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Project Harness",
+    "shortDescription": "Route context, preserve task continuity, and verify completion.",
+    "longDescription": "Install a small repository layer that routes scoped context, restores checkpointed task Journals, and finishes work through explicit verification and review.",
+    "developerName": "misotofu0525",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Set up Project Harness in this repository.",
+      "Create a Journal for this long-running task.",
+      "Verify and finish the active Journal."
+    ]
+  }
+}

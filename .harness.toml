@@ -1,0 +1,13 @@
+version = 1
+task_root = "docs/plans"
+context_index = "docs/agent/index.md"
+
+[verification]
+fast = [
+  "python3 -m unittest discover -s tests -p 'test_harness_core.py' -v",
+]
+full = [
+  "python3 -m unittest discover -s tests -v",
+  "python3 shared/scripts/sync-plugin-runtime.py --check",
+  "git diff --check",
+]

@@ -18,7 +18,7 @@
 - Updated `PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `VERIFICATION.md`, and `memory/active-tasks.json` to reflect the new repo-local skill convention.
 
 ### Verification
-- `PYTHONPATH=/tmp/current-docs-sync-validate-deps python3 /Users/misotofu/.codex/skills/.system/skill-creator/scripts/quick_validate.py docs/skills/current-docs-sync` -> passed
+- `PYTHONPATH=/tmp/current-docs-sync-validate-deps python3 <skill-creator>/scripts/quick_validate.py docs/skills/current-docs-sync` -> passed
 - `rg -n -P '^((?!rg -n).)*(\\[project-name\\]|\\[path-or-none\\]|\\[task-name\\]|\\[TODO:)' AGENTS.md PROJECT_CONTEXT.md ARCHITECTURE.md GOLDEN_PRINCIPLES.md VERIFICATION.md docs` -> no matches
 - `find docs/skills -maxdepth 3 -type f | sort` -> showed the expected three skill files
 - `find . -maxdepth 1 -type f | sort` -> confirmed no root-level planning files

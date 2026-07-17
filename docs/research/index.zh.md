@@ -38,4 +38,4 @@
 - 工作流项目提供工程化闭环，强调路由、验证、session-end 和热状态管理。
 - OpenAI 官方 Codex best practices 明确把 `AGENTS.md`、`.codex/config.toml`、planning、verification、MCP、skills、automations 和 multi-agent 连接成一条完整演进路径。
 - 关于 subagent 的当前结论是：subagent 主要用于隔离高噪音局部上下文，而 custom role 应该只保留少数跨项目可复用的治理动作。
-- 这个仓库当前的目标，不是复制某一个现成体系，而是把这些经验收成适合 Codex 的最小、可演进研究项目。
+- 这些研究现在为 Project Harness 提供设计依据；仓库交付的是面向 Codex 和 Claude Code 的可移植项目层，而不是继续扩张成通用 Agent runtime。

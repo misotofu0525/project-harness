@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finish Task"
+  short_description: "Verify, review, and archive a completed Journal"
+  default_prompt: "Use $finish-task to verify and archive the current Journal."

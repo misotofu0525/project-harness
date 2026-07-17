@@ -67,9 +67,9 @@
 | No prior session catchup output was returned | Proceeded with fresh planning files |
 
 ## Resources
-- Article summary file: `/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/how-to-be-a-world-class-agentic-engineer.md`
-- Paper full text: `/Users/misotofu/Documents/workspace/context-engineering/docs/research/sources/2512.05470-everything-is-context.md`
-- Paper Chinese summary: `/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/2512.05470-summary.zh.md`
+- Article summary file: `docs/research/sources/how-to-be-a-world-class-agentic-engineer.md`
+- Paper full text: `docs/research/sources/2512.05470-everything-is-context.md`
+- Paper Chinese summary: `docs/research/notes/2512.05470-summary.zh.md`
 - Target repo: `https://github.com/runesleo/claude-code-workflow`
 - Repo local snapshot: `/tmp/ccw.MHvfKr`
 - Repo README: `https://raw.githubusercontent.com/runesleo/claude-code-workflow/HEAD/README.md`
@@ -83,7 +83,7 @@
 - Repo debugging skill: `/tmp/ccw.MHvfKr/skills/systematic-debugging/SKILL.md`
 - Repo session-end skill: `/tmp/ccw.MHvfKr/skills/session-end/SKILL.md`
 - Repo review command: `/tmp/ccw.MHvfKr/commands/review.md`
-- Unified synthesis doc: `/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/context-engineering-experience-map.zh.md`
+- Unified synthesis doc: `docs/research/notes/context-engineering-experience-map.zh.md`
 
 ## Visual/Browser Findings
 - None yet.

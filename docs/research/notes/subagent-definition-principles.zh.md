@@ -1,7 +1,7 @@
 # Subagent 定义原则
 
-- 来源 1: [openai-codex-best-practices-summary.zh.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/openai-codex-best-practices-summary.zh.md)
-- 来源 2: [context-engineering-experience-map.zh.md](/Users/misotofu/Documents/workspace/context-engineering/docs/research/notes/context-engineering-experience-map.zh.md)
+- 来源 1: [openai-codex-best-practices-summary.zh.md](openai-codex-best-practices-summary.zh.md)
+- 来源 2: [context-engineering-experience-map.zh.md](context-engineering-experience-map.zh.md)
 - 来源 3: `2026-03-22` 本仓库关于 subagent 设计的交互式讨论与综合判断
 
 ## 一句话判断
@@ -421,4 +421,4 @@ custom subagent role 最重要的价值是 `沉淀跨项目可复用的上下文
 - 没有显式授权时，更好的默认动作是主动提出 delegation 建议，而不是假定会自动委派
 - `define custom role` 应该相对稀少
 
-真正值得长期保留成 custom role 的，通常不是“能力名字”，而是“治理动作”。 
+真正值得长期保留成 custom role 的，通常不是“能力名字”，而是“治理动作”。
